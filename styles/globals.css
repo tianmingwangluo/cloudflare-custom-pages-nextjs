@@ -111,20 +111,27 @@ html[data-theme="night"] .yy-shell {
   --yy-red: #e08a70;
   --yy-logo-url: url("/assets/yueyuan-logo-night.png");
   background: radial-gradient(
-      circle at 50% 44%,
-      rgba(245, 232, 203, 0.18),
-      transparent 19rem
+      circle at 50% 48%,
+      rgba(210, 229, 255, 0.18),
+      transparent 18rem
     ),
     radial-gradient(
-      ellipse at 18% 78%,
-      rgba(40, 91, 255, 0.22),
+      ellipse at 43% 54%,
+      rgba(66, 98, 255, 0.31),
+      rgba(111, 67, 255, 0.18) 26rem,
+      transparent 48rem
+    ),
+    radial-gradient(
+      ellipse at 72% 28%,
+      rgba(204, 85, 255, 0.18),
+      transparent 32rem
+    ),
+    radial-gradient(
+      ellipse at 18% 82%,
+      rgba(0, 181, 255, 0.16),
       transparent 34rem
     ),
-    radial-gradient(
-      ellipse at 82% 18%,
-      rgba(130, 74, 255, 0.2),
-      transparent 30rem
-    ), linear-gradient(135deg, #01030a 0%, #071026 46%, #030512 100%);
+    linear-gradient(135deg, #02030a 0%, #060b1c 42%, #0b071a 64%, #03030a 100%);
   color: var(--yy-ink);
 }
 
@@ -150,37 +157,78 @@ html[data-theme="night"] .yy-shell {
 
 html[data-theme="night"] .yy-shell::before {
   background-image: radial-gradient(
-      ellipse at 50% 48%,
-      rgba(245, 232, 203, 0.24),
-      rgba(66, 94, 255, 0.12) 25%,
-      rgba(143, 90, 255, 0.08) 43%,
+      ellipse at 50% 52%,
+      rgba(146, 183, 255, 0.22),
+      rgba(118, 84, 255, 0.14) 31%,
       transparent 67%
     ),
     linear-gradient(
       118deg,
-      transparent 12%,
-      rgba(50, 97, 210, 0.08) 27%,
-      rgba(245, 232, 203, 0.26) 46%,
-      rgba(133, 87, 255, 0.08) 62%,
+      transparent 8%,
+      rgba(40, 96, 255, 0.06) 25%,
+      rgba(236, 246, 255, 0.24) 46%,
+      rgba(166, 82, 255, 0.11) 62%,
       transparent 82%
     ),
     radial-gradient(
-      circle at 20% 20%,
-      rgba(245, 232, 203, 0.86) 0.7px,
-      transparent 1.7px
+      circle at 16% 18%,
+      rgba(255, 255, 255, 0.92) 0.55px,
+      transparent 1.45px
     ),
     radial-gradient(
-      circle at 74% 14%,
-      rgba(179, 199, 255, 0.64) 0.9px,
+      circle at 76% 16%,
+      rgba(179, 205, 255, 0.74) 0.75px,
       transparent 1.8px
     ),
     radial-gradient(
-      circle at 46% 68%,
-      rgba(210, 160, 87, 0.58) 0.7px,
-      transparent 1.7px
+      circle at 45% 72%,
+      rgba(210, 160, 87, 0.62) 0.65px,
+      transparent 1.65px
+    ),
+    radial-gradient(
+      circle at 62% 42%,
+      rgba(255, 255, 255, 0.55) 0.45px,
+      transparent 1.35px
     );
-  background-size: auto, auto, 180px 180px, 240px 240px, 130px 130px;
+  background-position: center, center, 0 0, 54px 96px, 18px 48px, 120px 28px;
+  background-size: auto, auto, 112px 112px, 172px 172px, 236px 236px, 318px
+    318px;
   mask-image: none;
+  opacity: 0.9;
+  animation: yy-galaxy-stars 54s linear infinite;
+}
+
+html[data-theme="night"] .yy-shell::after {
+  position: absolute;
+  inset: -8%;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background-image: radial-gradient(
+      circle at 12% 24%,
+      rgba(255, 255, 255, 0.86) 0.6px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 38% 62%,
+      rgba(147, 183, 255, 0.72) 0.7px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 72% 38%,
+      rgba(224, 180, 255, 0.66) 0.55px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 86% 76%,
+      rgba(255, 236, 195, 0.72) 0.5px,
+      transparent 1.4px
+    );
+  background-position: 0 0, 36px 80px, 120px 48px, 72px 140px;
+  background-size: 84px 84px, 136px 136px, 218px 218px, 330px 330px;
+  opacity: 0.38;
+  mix-blend-mode: screen;
+  animation: yy-star-twinkle 7s ease-in-out infinite alternate;
 }
 
 .yy-scenery {
@@ -222,31 +270,42 @@ html[data-theme="night"] .yy-shell::before {
 }
 
 html[data-theme="night"] .yy-scenery::before {
-  top: 4%;
-  width: min(82rem, 118vw);
-  height: min(46rem, 68vw);
-  transform: translateX(-50%) rotate(-13deg);
+  top: 1%;
+  width: min(96rem, 132vw);
+  height: min(56rem, 78vw);
+  transform: translateX(-50%) rotate(-18deg);
   border-radius: 50%;
-  background: radial-gradient(
-      ellipse at 50% 50%,
-      rgba(245, 232, 203, 0.34),
-      rgba(117, 142, 255, 0.22) 20%,
-      rgba(111, 66, 255, 0.12) 38%,
-      transparent 70%
+  background: linear-gradient(
+      98deg,
+      transparent 6%,
+      rgba(68, 117, 255, 0.12) 26%,
+      rgba(238, 246, 255, 0.2) 46%,
+      rgba(180, 84, 255, 0.15) 58%,
+      transparent 82%
     ),
     radial-gradient(
-      ellipse at 58% 45%,
-      rgba(255, 255, 255, 0.2),
-      transparent 32%
+      ellipse at 50% 50%,
+      rgba(255, 255, 255, 0.46),
+      rgba(151, 190, 255, 0.34) 13%,
+      rgba(88, 99, 255, 0.24) 29%,
+      rgba(175, 70, 255, 0.17) 43%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse at 63% 44%,
+      rgba(47, 222, 255, 0.17),
+      transparent 36%
     ),
     radial-gradient(
       ellipse at 35% 55%,
-      rgba(62, 105, 255, 0.2),
+      rgba(255, 78, 211, 0.14),
       transparent 42%
     );
-  mask-image: radial-gradient(ellipse, #000 0 46%, transparent 72%);
-  opacity: 0.58;
-  filter: blur(10px) drop-shadow(0 0 42px rgba(89, 119, 255, 0.24));
+  mask-image: radial-gradient(ellipse, #000 0 45%, transparent 75%);
+  opacity: 0.78;
+  filter: blur(8px) saturate(128%)
+    drop-shadow(0 0 48px rgba(94, 118, 255, 0.32));
+  animation: yy-galaxy-drift 30s ease-in-out infinite alternate;
 }
 
 .yy-scenery::after {
@@ -277,22 +336,34 @@ html[data-theme="night"] .yy-scenery::after {
   left: 0;
   height: 100%;
   background-image: radial-gradient(
-      circle at 10% 16%,
-      rgba(255, 255, 255, 0.74) 0.8px,
-      transparent 1.8px
+      circle at 11% 18%,
+      rgba(255, 255, 255, 0.88) 0.65px,
+      transparent 1.55px
     ),
     radial-gradient(
-      circle at 84% 28%,
-      rgba(180, 204, 255, 0.72) 0.9px,
-      transparent 2px
+      circle at 82% 26%,
+      rgba(176, 206, 255, 0.78) 0.8px,
+      transparent 1.9px
     ),
     radial-gradient(
-      circle at 58% 78%,
-      rgba(245, 232, 203, 0.62) 0.7px,
-      transparent 1.8px
+      circle at 56% 78%,
+      rgba(245, 232, 203, 0.66) 0.62px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 32% 44%,
+      rgba(196, 132, 255, 0.62) 0.52px,
+      transparent 1.45px
+    ),
+    radial-gradient(
+      circle at 68% 54%,
+      rgba(114, 231, 255, 0.46) 0.5px,
+      transparent 1.4px
     );
-  background-size: 230px 230px, 310px 310px, 170px 170px;
-  opacity: 0.8;
+  background-position: 0 0, 42px 64px, 18px 110px, 92px 22px, 140px 92px;
+  background-size: 92px 92px, 148px 148px, 226px 226px, 340px 340px, 520px 520px;
+  opacity: 0.92;
+  animation: yy-starfield-slide 78s linear infinite;
 }
 
 .yy-orbit {
@@ -698,27 +769,38 @@ html[data-theme="night"] .yy-card {
 html[data-theme="night"] .yy-card::before {
   border-color: rgba(210, 160, 87, 0.32);
   background: radial-gradient(
-      circle at 50% 16%,
-      rgba(245, 232, 203, 0.08),
-      transparent 16rem
+      ellipse at 50% 8%,
+      rgba(185, 211, 255, 0.1),
+      transparent 17rem
     ),
     radial-gradient(
-      ellipse at 50% 72%,
-      rgba(83, 111, 255, 0.08),
+      ellipse at 42% 78%,
+      rgba(93, 116, 255, 0.09),
       transparent 24rem
     ),
     radial-gradient(
+      ellipse at 76% 30%,
+      rgba(178, 83, 255, 0.07),
+      transparent 19rem
+    ),
+    radial-gradient(
       circle at 18% 24%,
-      rgba(245, 232, 203, 0.46) 0.7px,
-      transparent 1.7px
+      rgba(255, 255, 255, 0.42) 0.55px,
+      transparent 1.55px
     ),
     radial-gradient(
       circle at 82% 32%,
-      rgba(179, 199, 255, 0.36) 0.8px,
-      transparent 1.8px
+      rgba(166, 196, 255, 0.34) 0.65px,
+      transparent 1.65px
+    ),
+    radial-gradient(
+      circle at 54% 70%,
+      rgba(210, 160, 87, 0.3) 0.5px,
+      transparent 1.45px
     );
-  background-size: auto, auto, 180px 180px, 220px 220px;
-  opacity: 0.72;
+  background-position: center, center, center, 0 0, 64px 48px, 28px 82px;
+  background-size: auto, auto, auto, 154px 154px, 220px 220px, 296px 296px;
+  opacity: 0.66;
 }
 
 .yy-card > * {
@@ -1300,6 +1382,44 @@ html[data-locale="en"] .yy-button {
   }
 }
 
+@keyframes yy-galaxy-drift {
+  from {
+    transform: translateX(-50%) rotate(-18deg) scale(1);
+  }
+  to {
+    transform: translateX(-50%) translateY(1.4rem) rotate(-14deg) scale(1.06);
+  }
+}
+
+@keyframes yy-galaxy-stars {
+  from {
+    background-position: center, center, 0 0, 54px 96px, 18px 48px, 120px 28px;
+  }
+  to {
+    background-position: center, center, 112px 72px, 206px 188px, 254px 170px,
+      438px 282px;
+  }
+}
+
+@keyframes yy-starfield-slide {
+  from {
+    background-position: 0 0, 42px 64px, 18px 110px, 92px 22px, 140px 92px;
+  }
+  to {
+    background-position: 92px 62px, 190px 210px, 244px 286px, 432px 248px, 660px
+      456px;
+  }
+}
+
+@keyframes yy-star-twinkle {
+  from {
+    opacity: 0.26;
+  }
+  to {
+    opacity: 0.48;
+  }
+}
+
 @media (max-width: 900px) {
   .yy-shell {
     overflow-x: hidden;
@@ -1395,6 +1515,17 @@ html[data-locale="en"] .yy-button {
     transform-origin: top center;
   }
 
+  html[data-theme="night"] .yy-scenery::before {
+    top: 6%;
+    width: min(62rem, 172vw);
+    height: min(38rem, 118vw);
+    opacity: 0.58;
+  }
+
+  html[data-theme="night"] .yy-shell::after {
+    opacity: 0.28;
+  }
+
   .yy-card__rule {
     margin-bottom: 1rem;
   }
@@ -1453,6 +1584,10 @@ html[data-locale="en"] .yy-button {
 @media (prefers-reduced-motion: reduce) {
   .yy-card,
   .yy-orbit,
+  .yy-shell::before,
+  .yy-shell::after,
+  .yy-scenery::before,
+  .yy-scenery::after,
   .yy-button {
     animation: none;
     transition: none;
