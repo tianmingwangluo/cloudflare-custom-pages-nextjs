@@ -18,7 +18,7 @@ export function SecurityMetaBar({
   const locale = useLocale();
 
   return (
-    <div className="yy-meta" data-ray-fallback="7F4C-9A21-RAY">
+    <div className="yy-meta">
       <div className="yy-meta__item">
         <Icon name="shield" className="yy-meta__icon" />
         <span>{translate(commonTranslations.yueYuanStatus, locale)}</span>
