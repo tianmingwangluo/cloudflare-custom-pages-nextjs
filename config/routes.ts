@@ -17,7 +17,12 @@ export type ErrorPageConfig = BasePageConfig & {
 };
 
 export type ChallengePageConfig = BasePageConfig & {
-  type: "interactive" | "managed" | "country" | "javascript";
+  type:
+    | "interactive"
+    | "managed"
+    | "country"
+    | "javascript"
+    | "non-interactive";
   box: string | null;
 };
 
@@ -37,6 +42,7 @@ export const types = {
     "interactive",
     "managed",
     "javascript",
+    "non-interactive",
   ] as ChallengeType[],
 };
 
@@ -111,7 +117,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   interactive: {
     type: "interactive",
     code: "403",
-    box: "CF_WIDGET_BOX",
+    box: "CAPTCHA_BOX",
     icon: "shield",
     networkStatus: {
       clientStatus: "challenging",
@@ -121,7 +127,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   managed: {
     type: "managed",
     code: "403",
-    box: "CF_WIDGET_BOX",
+    box: "CAPTCHA_BOX",
     icon: "shield-ellipsis",
     networkStatus: {
       clientStatus: "challenging",
@@ -131,7 +137,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   country: {
     type: "country",
     code: "403",
-    box: "CF_WIDGET_BOX",
+    box: "CAPTCHA_BOX",
     icon: "map-pin",
     networkStatus: {
       clientStatus: "challenging",
@@ -141,7 +147,17 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   javascript: {
     type: "javascript",
     code: "403",
-    box: "CF_WIDGET_BOX",
+    box: "IM_UNDER_ATTACK_BOX",
+    icon: "loader-circle",
+    networkStatus: {
+      clientStatus: "challenging",
+      edgeStatus: "success",
+    },
+  },
+  "non-interactive": {
+    type: "non-interactive",
+    code: "403",
+    box: "IM_UNDER_ATTACK_BOX",
     icon: "loader-circle",
     networkStatus: {
       clientStatus: "challenging",

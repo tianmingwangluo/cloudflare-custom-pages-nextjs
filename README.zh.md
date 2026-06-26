@@ -68,7 +68,8 @@
 -   `::GEO::` - 客户端地理位置
 -   `::CLOUDFLARE_ERROR_500S_BOX::` - 500s 错误页面组件
 -   `::CLOUDFLARE_ERROR_1000S_BOX::` - 1000s 错误页面组件
--   `::CF_WIDGET_BOX::` - Cloudflare 的挑战验证组件
+-   `::CAPTCHA_BOX::` - 交互式、托管、国家/地区质询组件
+-   `::IM_UNDER_ATTACK_BOX::` - 非交互式质询组件
 
 ## 🔭 使用指南
 
@@ -158,7 +159,7 @@
 
 ### 2. 自定义文案
 
-可在 `./config/i18n.ts` 中修改所有文案的翻译 (TODO: 支持多语言)。
+可在 `./config/i18n.ts` 中修改所有文案的翻译。
 
 如需修改页面文案，编辑 `./config/i18n.ts`：
 

@@ -69,7 +69,8 @@ Currently supported automatic variable replacements:
 -   `::GEO::` - Client Geolocation
 -   `::CLOUDFLARE_ERROR_500S_BOX::` - 500s Error Page Component
 -   `::CLOUDFLARE_ERROR_1000S_BOX::` - 1000s Error Page Component
--   `::CF_WIDGET_BOX::` - Cloudflare Challenge Widget Component
+-   `::CAPTCHA_BOX::` - Interactive, Managed, and Country Challenge Component
+-   `::IM_UNDER_ATTACK_BOX::` - Non-interactive Challenge Component
 
 ## 🔭 Usage
 
@@ -159,7 +160,7 @@ Modify fields in `./config/site.ts` (name, description, etc.).
 
 ### 2. Content Customization
 
-Translations of all texts can be modified in `. /config/i18n.ts` to change the translation of all texts (TODO: multi-language support).
+Translations of all texts can be modified in `./config/i18n.ts`.
 
 To change the page text, edit `. /config/i18n.ts`:
 

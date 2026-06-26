@@ -209,6 +209,24 @@ export const challengePageTranslations: Record<
         "请保持此页面打开，并不要禁用 JavaScript 或 Cookie。验证完成后页面会继续访问。",
     },
   },
+  "non-interactive": {
+    en: {
+      title: "Non-interactive challenge",
+      message:
+        "Cloudflare is verifying this browser automatically. No manual action is usually required while the check is running.",
+      adviceTitle: "Automatic check",
+      adviceMessage:
+        "Keep this page open and do not disable JavaScript or cookies. The page will continue when the verification finishes.",
+    },
+    zh: {
+      title: "非交互式挑战",
+      message:
+        "Cloudflare 正在自动验证当前浏览器。检查过程中通常不需要手动操作。",
+      adviceTitle: "自动检查",
+      adviceMessage:
+        "请保持此页面打开，并不要禁用 JavaScript 或 Cookie。验证完成后页面会继续访问。",
+    },
+  },
 } as const;
 
 export const interfaceTranslations: Record<
