@@ -1,3 +1,4 @@
+import { LanguageSwitch } from "@/components/i18n/language-switch";
 import { ThemeSwitch } from "@/components/theme-switch";
 import type { ColorScheme } from "@/config/home";
 import { clsx as cx } from "clsx";
@@ -77,7 +78,10 @@ export const CFCard = ({
                   {subtitle}
                 </div>
               )}
-              <ThemeSwitch className="shrink-0" />
+              <div className="flex shrink-0 items-center gap-2">
+                <LanguageSwitch />
+                <ThemeSwitch />
+              </div>
             </div>
 
             <div className="flex flex-col gap-6 sm:flex-row sm:items-start">

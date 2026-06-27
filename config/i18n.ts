@@ -255,6 +255,18 @@ export const commonTranslations = {
     en: "GitHub repository",
     zh: "GitHub 仓库",
   },
+  languageSwitch: {
+    en: "Language",
+    zh: "语言",
+  },
+  switchToEnglish: {
+    en: "Switch to English",
+    zh: "切换到英文",
+  },
+  switchToChinese: {
+    en: "Switch to Chinese",
+    zh: "切换到中文",
+  },
   notFoundTitle: {
     en: "Page not found",
     zh: "页面不存在",

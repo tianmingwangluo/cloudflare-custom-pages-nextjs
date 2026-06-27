@@ -12,6 +12,7 @@ import {
   Heart,
   HelpCircle,
   Info,
+  Languages,
   Lightbulb,
   Loader,
   LoaderCircle,
@@ -45,6 +46,7 @@ export type IconKey =
   | "triangle-alert"
   | "lock"
   | "info"
+  | "languages"
   | "book-open"
   | "github"
   | "heart"
@@ -74,6 +76,7 @@ export const icons: Record<IconKey, LucideIcon> = {
   "triangle-alert": TriangleAlert,
   lock: Lock,
   info: Info,
+  languages: Languages,
   "book-open": BookOpen,
   github: Github,
   heart: Heart,

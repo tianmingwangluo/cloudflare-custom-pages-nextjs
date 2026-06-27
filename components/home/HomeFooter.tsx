@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "@/components/i18n/use-locale";
+import { LanguageSwitch } from "@/components/i18n/language-switch";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Icon } from "@/components/ui/icon";
 import {
@@ -71,6 +72,7 @@ const HomeFooter: FC<{ className?: string }> = ({ className }) => {
           {links.map((link) => (
             <FooterLink key={link.href} {...link} />
           ))}
+          <LanguageSwitch />
           <ThemeSwitch />
         </div>
       </div>
