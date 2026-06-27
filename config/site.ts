@@ -4,12 +4,12 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: {
-    en: "Cloudflare Security Pages",
-    zh: "Cloudflare 安全拦截页",
+    en: "YueYuan Edge Security",
+    zh: "月垣护界",
   } satisfies Localized<string>,
   description: {
-    en: "A minimal, composed, bilingual template set for Cloudflare custom security and error pages.",
-    zh: "一套简约、克制、中英文双版本的 Cloudflare 安全与错误自定义页面模板。",
+    en: "A refined YueYuan-style Cloudflare custom security and error page set.",
+    zh: "一套月白山水风格的 Cloudflare 安全与错误自定义页面模板。",
   } satisfies Localized<string>,
   headerNavItems: [
     {

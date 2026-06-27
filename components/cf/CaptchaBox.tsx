@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocalizedDocumentTitle } from "@/components/i18n/use-locale";
-import { Icon } from "@/components/ui/icon";
 import {
   challengePageTranslations,
   commonTranslations,
@@ -11,74 +10,47 @@ import type { ChallengePageConfig } from "@/config/routes";
 import Head from "next/head";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
-import { NetworkStatusBox } from "./ui/NetworkStatusBox";
-import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
+import { SecurityMetaBar } from "./ui/SecurityMetaBar";
+import { YueYuanActions } from "./ui/YueYuanActions";
 
-export const CaptchaBox = ({
-  type,
-  code,
-  box,
-  icon,
-  networkStatus,
-}: ChallengePageConfig) => {
+export const CaptchaBox = ({ type, box }: ChallengePageConfig) => {
   const locale = useLocalizedDocumentTitle({
-    en: `${translate(challengePageTranslations[type], "en").title} - Cloudflare`,
-    zh: `${translate(challengePageTranslations[type], "zh").title} - Cloudflare`,
+    en: `${translate(challengePageTranslations[type], "en").title} - YueYuan`,
+    zh: `${translate(challengePageTranslations[type], "zh").title} - 月垣护界`,
   });
   const translation = translate(challengePageTranslations[type], locale);
-  const adviceTitle =
-    translation.adviceTitle ??
-    translate(commonTranslations.verificationTitle, locale);
-  const adviceMessage =
-    translation.adviceMessage ??
-    translate(commonTranslations.verificationBody, locale);
 
   return (
     <CFCardWrap>
       <Head>
-        <title>{translation.title} - Cloudflare</title>
+        <title>{translation.title} - YueYuan</title>
         <meta name="description" content={translation.message} />
       </Head>
 
       <CFCard
-        title={translation.title}
-        message={translation.message}
-        subtitle={`${translate(commonTranslations.securityCheck, locale)} / HTTP ${code}`}
-        icon={<Icon name={icon} className="h-6 w-6" />}
-        scheme="primary"
-        footer={
-          <div className="space-y-8">
-            <div>
-              <NetworkStatusWrapper />
-              <NetworkStatusBox {...networkStatus} />
-            </div>
-
-            <div>
-              <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {adviceTitle}
-              </h2>
-              <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
-                {adviceMessage}
-              </p>
-            </div>
-          </div>
-        }
+        title={translate(commonTranslations.yueYuanTitle, locale)}
+        subtitle={translate(commonTranslations.yueYuanSubtitle, locale)}
+        message={translate(commonTranslations.yueYuanBody, locale)}
       >
-        <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-700 dark:bg-zinc-900/60">
-          <div className="flex min-h-28 items-center justify-center rounded-md bg-white p-4 dark:bg-zinc-950">
-            {box ? (
-              <div
-                className="w-full text-center text-sm text-zinc-500 dark:text-zinc-400"
-                dangerouslySetInnerHTML={{ __html: `<div>::${box}::</div>` }}
-                aria-live="polite"
-              />
-            ) : (
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                {translate(commonTranslations.verificationLoading, locale)}
-              </p>
-            )}
+        <SecurityMetaBar />
+
+        {box && (
+          <div className="yy-widget">
+            <h2>{translate(commonTranslations.challengePanelTitle, locale)}</h2>
+            <div
+              className="yy-widget__box"
+              dangerouslySetInnerHTML={{ __html: `<div>::${box}::</div>` }}
+              aria-live="polite"
+            />
           </div>
+        )}
+
+        <div className="yy-note">
+          <h2>{translation.adviceTitle}</h2>
+          <p>{translation.adviceMessage}</p>
         </div>
+
+        <YueYuanActions />
       </CFCard>
     </CFCardWrap>
   );

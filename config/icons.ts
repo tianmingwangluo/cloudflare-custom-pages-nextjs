@@ -11,6 +11,7 @@ import {
   Github,
   Heart,
   HelpCircle,
+  Home,
   Info,
   Languages,
   Lightbulb,
@@ -19,6 +20,7 @@ import {
   Lock,
   type LucideIcon,
   MapPin,
+  MessageSquare,
   Moon,
   Network,
   Shield,
@@ -51,11 +53,13 @@ export type IconKey =
   | "book-open"
   | "github"
   | "heart"
+  | "home"
   | "arrow-right"
   | "check-circle"
   | "x-circle"
   | "loader-circle"
   | "map-pin"
+  | "message-square"
   | "activity"
   | "network"
   | "help-circle"
@@ -82,11 +86,13 @@ export const icons: Record<IconKey, LucideIcon> = {
   "book-open": BookOpen,
   github: Github,
   heart: Heart,
+  home: Home,
   "arrow-right": ArrowRight,
   "check-circle": CheckCircle,
   "x-circle": XCircle,
   "loader-circle": LoaderCircle,
   "map-pin": MapPin,
+  "message-square": MessageSquare,
   activity: Activity,
   network: Network,
   "help-circle": HelpCircle,

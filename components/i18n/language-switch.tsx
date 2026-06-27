@@ -39,6 +39,7 @@ export const LanguageSwitch: FC<LanguageSwitchProps> = ({ className }) => {
 
   return (
     <fieldset
+      data-locale-switch="true"
       className={cx(
         "m-0 inline-flex h-9 min-w-0 shrink-0 items-stretch overflow-hidden rounded-md border border-zinc-200 bg-white p-0 text-xs font-medium shadow-sm dark:border-zinc-800 dark:bg-zinc-950",
         className,
@@ -59,6 +60,7 @@ export const LanguageSwitch: FC<LanguageSwitchProps> = ({ className }) => {
           <button
             key={option.value}
             type="button"
+            data-locale-button={option.value}
             aria-label={translate(option.ariaLabel, locale)}
             aria-pressed={active}
             className={cx(

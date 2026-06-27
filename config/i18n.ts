@@ -253,6 +253,82 @@ export const statusTranslations = {
 } as const satisfies Record<string, Localized<string>>;
 
 export const commonTranslations = {
+  yueYuanBrand: {
+    en: "YueYuan Guard · Active",
+    zh: "月垣护界 · 已启",
+  },
+  yueYuanTitle: {
+    en: "YueYuan guards this passage",
+    zh: "此间设有月垣，暂不可通行",
+  },
+  yueYuanSubtitle: {
+    en: "This request did not pass the edge security check",
+    zh: "当前请求未通过边缘安全校验",
+  },
+  yueYuanBody: {
+    en: "To protect site stability and data security, this request has been stopped by the edge gateway. Possible causes include unusual request frequency, a suspicious proxy environment, or automated behavior. If you need help, contact the site owner.",
+    zh: "为保障站点稳定与数据安全，系统已拦截此次请求。可能原因：访问频率异常、代理环境可疑或检测到自动化行为。如有疑问，请联系站主协助处理。",
+  },
+  yueYuanErrorBody: {
+    en: "YueYuan Edge Security is holding this request while the site connection is checked. Please try again later, or share the request ID with the site owner if the problem continues.",
+    zh: "月垣护界正在巡检站点连接状态，本次请求已暂缓通行。请稍后再试；如果问题持续出现，请将请求编号提供给站主协助排查。",
+  },
+  yueYuanStatus: {
+    en: "Status",
+    zh: "状态",
+  },
+  yueYuanBlocked: {
+    en: "Blocked",
+    zh: "已拦截",
+  },
+  yueYuanGuarding: {
+    en: "Guarding",
+    zh: "守护中",
+  },
+  yueYuanType: {
+    en: "Type",
+    zh: "类型",
+  },
+  yueYuanEdgeType: {
+    en: "Edge protection",
+    zh: "边缘防护",
+  },
+  yueYuanRequestId: {
+    en: "Request ID",
+    zh: "请求编号",
+  },
+  yueYuanVerticalTop: {
+    en: "YueYuan guards all paths",
+    zh: "月垣镇四方",
+  },
+  yueYuanVerticalBottom: {
+    en: "Boundaries stay calm",
+    zh: "护界佑安宁",
+  },
+  yueYuanSealTop: {
+    en: "Guard",
+    zh: "护界",
+  },
+  yueYuanSealBottom: {
+    en: "Active",
+    zh: "已启",
+  },
+  yueYuanProtectedBy: {
+    en: "Protected by YueYuan Edge Security",
+    zh: "Protected by YueYuan Edge Security",
+  },
+  contactOwner: {
+    en: "Contact owner",
+    zh: "联系站主",
+  },
+  challengePanelTitle: {
+    en: "Security verification",
+    zh: "安全验证",
+  },
+  detailPanelTitle: {
+    en: "Cloudflare details",
+    zh: "Cloudflare 返回信息",
+  },
   accessControl: {
     en: "Access control",
     zh: "访问控制",
