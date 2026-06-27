@@ -1,4 +1,8 @@
+"use client";
+
+import { useLocale } from "@/components/i18n/use-locale";
 import { Icon } from "@/components/ui/icon";
+import { statusTranslations, translate } from "@/config/i18n";
 import { clsx } from "clsx";
 
 type NetworkStatus = "success" | "error" | "challenging";
@@ -11,19 +15,16 @@ interface NetworkNodeProps {
 
 const statusConfig = {
   success: {
-    text: "正常",
     icon: "check-circle",
     className:
       "border-emerald-100 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/40 dark:text-emerald-300",
   },
   error: {
-    text: "受限",
     icon: "x-circle",
     className:
       "border-red-100 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-300",
   },
   challenging: {
-    text: "验证中",
     icon: "shield-check",
     className:
       "border-amber-100 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-300",
@@ -31,6 +32,7 @@ const statusConfig = {
 } as const;
 
 export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
+  const locale = useLocale();
   const config = statusConfig[status];
 
   return (
@@ -44,7 +46,7 @@ export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
       <span className="min-w-0 truncate text-sm font-medium">{label}</span>
       <span className="inline-flex shrink-0 items-center gap-1.5 text-xs">
         <Icon name={config.icon} className="h-3.5 w-3.5" />
-        {config.text}
+        {translate(statusTranslations[status], locale)}
       </span>
     </div>
   );

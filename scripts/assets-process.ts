@@ -5,6 +5,7 @@ import {
   blockPageTranslations,
   challengePageTranslations,
   errorPageTranslations,
+  translate,
 } from "../config/i18n";
 
 function getAllHtmlFiles(dirPath: string): string[] {
@@ -75,14 +76,17 @@ function updateTDK($: cheerio.CheerioAPI, filePath: string): void {
   let pageDescription = "";
 
   if (directory === "block" && type in blockPageTranslations) {
-    pageTitle = blockPageTranslations[type].title;
-    pageDescription = blockPageTranslations[type].message;
+    const translation = translate(blockPageTranslations[type], "en");
+    pageTitle = translation.title;
+    pageDescription = translation.message;
   } else if (directory === "error" && type in errorPageTranslations) {
-    pageTitle = errorPageTranslations[type].title;
-    pageDescription = errorPageTranslations[type].message;
+    const translation = translate(errorPageTranslations[type], "en");
+    pageTitle = translation.title;
+    pageDescription = translation.message;
   } else if (directory === "challenge" && type in challengePageTranslations) {
-    pageTitle = challengePageTranslations[type].title;
-    pageDescription = challengePageTranslations[type].message;
+    const translation = translate(challengePageTranslations[type], "en");
+    pageTitle = translation.title;
+    pageDescription = translation.message;
   }
 
   if (pageTitle) {

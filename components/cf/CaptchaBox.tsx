@@ -1,12 +1,18 @@
 "use client";
 
+import { useLocalizedDocumentTitle } from "@/components/i18n/use-locale";
 import { Icon } from "@/components/ui/icon";
-import { challengePageTranslations } from "@/config/i18n";
+import {
+  challengePageTranslations,
+  commonTranslations,
+  translate,
+} from "@/config/i18n";
 import type { ChallengePageConfig } from "@/config/routes";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
+import Head from "next/head";
 
 export const CaptchaBox = ({
   type,
@@ -15,28 +21,38 @@ export const CaptchaBox = ({
   icon,
   networkStatus,
 }: ChallengePageConfig) => {
-  const translation = challengePageTranslations[type];
+  const locale = useLocalizedDocumentTitle({
+    en: `${translate(challengePageTranslations[type], "en").title} - Cloudflare`,
+    zh: `${translate(challengePageTranslations[type], "zh").title} - Cloudflare`,
+  });
+  const translation = translate(challengePageTranslations[type], locale);
 
   return (
     <CFCardWrap>
+      <Head>
+        <title>{translation.title} - Cloudflare</title>
+        <meta name="description" content={translation.message} />
+      </Head>
+
       <CFCard
         title={translation.title}
         message={translation.message}
-        subtitle={`安全验证 / HTTP ${code}`}
+        subtitle={`${translate(commonTranslations.securityCheck, locale)} / HTTP ${code}`}
         icon={<Icon name={icon} className="h-6 w-6" />}
         scheme="primary"
         footer={
           <div className="space-y-8">
-            <NetworkStatusWrapper>
+            <div>
+              <NetworkStatusWrapper />
               <NetworkStatusBox {...networkStatus} />
-            </NetworkStatusWrapper>
+            </div>
 
             <div>
               <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                验证说明
+                {translate(commonTranslations.verificationTitle, locale)}
               </h2>
               <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
-                验证由 Cloudflare 自动完成。请保持浏览器启用 JavaScript 与 Cookie。
+                {translate(commonTranslations.verificationBody, locale)}
               </p>
             </div>
           </div>
@@ -52,7 +68,7 @@ export const CaptchaBox = ({
               />
             ) : (
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                正在加载验证组件
+                {translate(commonTranslations.verificationLoading, locale)}
               </p>
             )}
           </div>

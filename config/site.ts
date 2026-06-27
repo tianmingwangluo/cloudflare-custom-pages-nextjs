@@ -1,11 +1,22 @@
+import type { Localized } from "./i18n";
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Cloudflare 安全拦截页",
-  description: "一套简约、克制、中文优先的 Cloudflare WAF 自定义页面模板。",
+  name: {
+    en: "Cloudflare Security Pages",
+    zh: "Cloudflare 安全拦截页",
+  } satisfies Localized<string>,
+  description: {
+    en: "A minimal, composed, bilingual Cloudflare WAF custom page template.",
+    zh: "一套简约、克制、中英文双版本的 Cloudflare WAF 自定义页面模板。",
+  } satisfies Localized<string>,
   headerNavItems: [
     {
-      label: "首页",
+      label: {
+        en: "Home",
+        zh: "首页",
+      } satisfies Localized<string>,
       href: "/",
     },
   ],

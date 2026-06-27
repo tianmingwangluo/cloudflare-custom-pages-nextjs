@@ -1,5 +1,6 @@
 "use client";
 
+import { useLocale } from "@/components/i18n/use-locale";
 import { Icon } from "@/components/ui/icon";
 import { clsx as cx } from "clsx";
 import { useTheme } from "next-themes";
@@ -11,12 +12,20 @@ export interface ThemeSwitchProps {
 }
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
+  const locale = useLocale();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   const isDark = resolvedTheme === "dark";
+  const label = isDark
+    ? locale === "zh"
+      ? "切换到浅色模式"
+      : "Switch to light mode"
+    : locale === "zh"
+      ? "切换到深色模式"
+      : "Switch to dark mode";
 
   return (
     <button
@@ -26,7 +35,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
         className,
       )}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "切换到浅色模式" : "切换到深色模式"}
+      aria-label={label}
     >
       {mounted && isDark ? (
         <Icon name="sun" className="h-4 w-4" />

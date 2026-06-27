@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
       themeProps={{ attribute: "class", defaultTheme: "system", enableSystem: true }}
     >
       <Head>
-        <title>{siteConfig.name}</title>
+        <title>{siteConfig.name.en}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Component {...pageProps} />

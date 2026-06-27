@@ -2,6 +2,9 @@ import {
   blockPageTranslations,
   challengePageTranslations,
   errorPageTranslations,
+  type Locale,
+  type Localized,
+  translate,
 } from "./i18n";
 import type { IconKey } from "./icons";
 import { blockPages, challengePages, errorPages } from "./routes";
@@ -32,6 +35,42 @@ export interface Section {
   pages: Page[];
 }
 
+const sectionTranslations = {
+  error: {
+    en: {
+      title: "Error pages",
+      description: "For origin errors, DNS issues, and connection failures.",
+    },
+    zh: {
+      title: "错误页面",
+      description: "用于源站异常、DNS 或连接错误场景。",
+    },
+  },
+  block: {
+    en: {
+      title: "Block pages",
+      description: "For IP, WAF, custom rule, and rate limit blocks.",
+    },
+    zh: {
+      title: "拦截页面",
+      description: "用于 IP、WAF、自定义规则与限速拦截。",
+    },
+  },
+  challenge: {
+    en: {
+      title: "Challenge pages",
+      description: "For managed challenges, interactive checks, and browser verification.",
+    },
+    zh: {
+      title: "验证页面",
+      description: "用于托管质询、交互验证与浏览器检查。",
+    },
+  },
+} as const satisfies Record<
+  string,
+  Localized<{ title: string; description: string }>
+>;
+
 export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   danger: {
     itemBg: "hover:bg-red-50 dark:hover:bg-red-950/30",
@@ -60,41 +99,47 @@ export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   },
 };
 
-export const sections: Section[] = [
-  {
-    title: "错误页面",
-    description: "用于源站异常、DNS 或连接错误场景。",
-    icon: "triangle-alert",
-    color: "danger",
-    pages: Object.entries(errorPages).map(([type, config]) => ({
-      title: errorPageTranslations[type].title,
-      path: `/cf/error/${type}/`,
-      code: config.code,
-      icon: config.icon,
-    })),
-  },
-  {
-    title: "拦截页面",
-    description: "用于 IP、WAF、自定义规则与限速拦截。",
-    icon: "lock",
-    color: "warning",
-    pages: Object.entries(blockPages).map(([type, config]) => ({
-      title: blockPageTranslations[type].title,
-      path: `/cf/block/${type}/`,
-      code: config.code,
-      icon: config.icon,
-    })),
-  },
-  {
-    title: "验证页面",
-    description: "用于托管质询、交互验证与浏览器检查。",
-    icon: "shield-check",
-    color: "primary",
-    pages: Object.entries(challengePages).map(([type, config]) => ({
-      title: challengePageTranslations[type].title,
-      path: `/cf/challenge/${type}/`,
-      code: config.code,
-      icon: config.icon,
-    })),
-  },
-];
+export function getSections(locale: Locale): Section[] {
+  const error = translate(sectionTranslations.error, locale);
+  const block = translate(sectionTranslations.block, locale);
+  const challenge = translate(sectionTranslations.challenge, locale);
+
+  return [
+    {
+      title: error.title,
+      description: error.description,
+      icon: "triangle-alert",
+      color: "danger",
+      pages: Object.entries(errorPages).map(([type, config]) => ({
+        title: translate(errorPageTranslations[type], locale).title,
+        path: `/cf/error/${type}/`,
+        code: config.code,
+        icon: config.icon,
+      })),
+    },
+    {
+      title: block.title,
+      description: block.description,
+      icon: "lock",
+      color: "warning",
+      pages: Object.entries(blockPages).map(([type, config]) => ({
+        title: translate(blockPageTranslations[type], locale).title,
+        path: `/cf/block/${type}/`,
+        code: config.code,
+        icon: config.icon,
+      })),
+    },
+    {
+      title: challenge.title,
+      description: challenge.description,
+      icon: "shield-check",
+      color: "primary",
+      pages: Object.entries(challengePages).map(([type, config]) => ({
+        title: translate(challengePageTranslations[type], locale).title,
+        path: `/cf/challenge/${type}/`,
+        code: config.code,
+        icon: config.icon,
+      })),
+    },
+  ];
+}

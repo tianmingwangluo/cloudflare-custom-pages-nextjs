@@ -1,7 +1,13 @@
 "use client";
 
+import { useLocale } from "@/components/i18n/use-locale";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Icon } from "@/components/ui/icon";
+import {
+  commonTranslations,
+  translate,
+  type Localized,
+} from "@/config/i18n";
 import type { IconKey } from "@/config/icons";
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";
@@ -29,13 +35,21 @@ const FooterLink = memo<FooterLinkProps>(({ href, icon, label }) => (
 
 FooterLink.displayName = "FooterLink";
 
+const makeLabel = (value: Localized<string>, locale: "en" | "zh") =>
+  translate(value, locale);
+
 const HomeFooter: FC<{ className?: string }> = ({ className }) => {
+  const locale = useLocale();
   const links: FooterLinkProps[] = [
-    { href: siteConfig.links.docs, icon: "book-open", label: "Cloudflare 文档" },
+    {
+      href: siteConfig.links.docs,
+      icon: "book-open",
+      label: makeLabel(commonTranslations.cloudflareDocs, locale),
+    },
     {
       href: siteConfig.links.github,
       icon: "github",
-      label: "GitHub 仓库",
+      label: makeLabel(commonTranslations.githubRepository, locale),
     },
   ];
 
@@ -50,7 +64,7 @@ const HomeFooter: FC<{ className?: string }> = ({ className }) => {
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6 lg:px-8">
         <div className="text-sm text-zinc-500 dark:text-zinc-400">
-          2026 Cloudflare 安全拦截页模板
+          {translate(commonTranslations.homeFooter, locale)}
         </div>
 
         <div className="flex items-center gap-2">
