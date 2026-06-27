@@ -614,7 +614,7 @@ html[data-theme="night"] .yy-brand {
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: clamp(7rem, 12vh, 9rem) clamp(1rem, 4vw, 4rem) 4.5rem;
+  padding: clamp(6.25rem, 10vh, 8rem) clamp(1rem, 4vw, 4rem) 3.8rem;
 }
 
 .yy-main__inner {
@@ -711,9 +711,9 @@ html[data-theme="night"] .yy-protected {
 .yy-card {
   position: relative;
   width: 100%;
-  min-height: 430px;
-  padding: clamp(3.4rem, 6vw, 4.8rem) clamp(1.3rem, 5vw, 4rem)
-    clamp(1.8rem, 4vw, 2.6rem);
+  min-height: 400px;
+  padding: clamp(3.05rem, 5.2vw, 4.3rem) clamp(1.3rem, 5vw, 4rem)
+    clamp(1.55rem, 3.4vw, 2.25rem);
   border: 1px solid rgba(167, 122, 50, 0.78);
   border-radius: 0.55rem;
   background: radial-gradient(
@@ -1040,7 +1040,7 @@ html[data-theme="night"] .yy-divider span::after {
 .yy-title {
   margin: 0;
   color: var(--yy-ink);
-  font-size: clamp(2.15rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.05rem, 4vw, 3.25rem);
   font-weight: 800;
   letter-spacing: 0.03em;
   line-height: 1.1;
@@ -1048,7 +1048,7 @@ html[data-theme="night"] .yy-divider span::after {
 }
 
 .yy-subtitle {
-  margin: 1rem auto 0;
+  margin: 0.82rem auto 0;
   color: rgba(31, 74, 66, 0.82);
   font-size: clamp(1.02rem, 2vw, 1.38rem);
   letter-spacing: 0.1em;
@@ -1060,7 +1060,7 @@ html[data-theme="night"] .yy-subtitle {
 
 .yy-divider {
   position: relative;
-  margin: 1rem auto 1.6rem;
+  margin: 0.85rem auto 1.25rem;
   width: min(360px, 68%);
   height: 1px;
   background: linear-gradient(
@@ -1087,7 +1087,7 @@ html[data-theme="night"] .yy-subtitle {
   margin: 0 auto;
   color: var(--yy-text);
   font-size: 1rem;
-  line-height: 2;
+  line-height: 1.85;
   letter-spacing: 0.03em;
 }
 
@@ -1096,12 +1096,15 @@ html[data-theme="night"] .yy-message {
 }
 
 .yy-card__body {
-  margin-top: 1.65rem;
+  margin-top: 1.35rem;
 }
 
 .yy-meta {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.95fr) minmax(14rem, 1.2fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.95fr) minmax(
+      14rem,
+      1.2fr
+    );
   max-width: 760px;
   margin: 0 auto;
   border: 1px solid rgba(167, 122, 50, 0.42);
@@ -1164,10 +1167,10 @@ html[data-theme="night"] .yy-meta {
 
 .yy-note {
   max-width: 660px;
-  margin: 1rem auto 0;
+  margin: 0.88rem auto 0;
   color: rgba(63, 74, 68, 0.78);
   font-size: 0.92rem;
-  line-height: 1.75;
+  line-height: 1.65;
 }
 
 html[data-theme="night"] .yy-note {
@@ -1191,8 +1194,8 @@ html[data-theme="night"] .yy-note {
 .yy-widget,
 .yy-detail {
   max-width: 700px;
-  margin: 1rem auto 0;
-  padding: 0.9rem;
+  margin: 0.88rem auto 0;
+  padding: 0.78rem;
   border: 1px dashed rgba(167, 122, 50, 0.4);
   border-radius: 0.35rem;
   background: rgba(255, 250, 239, 0.48);
@@ -1207,7 +1210,7 @@ html[data-theme="night"] .yy-detail {
 .yy-widget__box,
 .yy-detail__box {
   display: flex;
-  min-height: 5rem;
+  min-height: 4.35rem;
   align-items: center;
   justify-content: center;
   overflow-x: auto;
@@ -1226,6 +1229,31 @@ html[data-theme="night"] .yy-detail {
   max-width: 100%;
 }
 
+.yy-detail__box h1 {
+  margin: 0 0 0.75rem;
+  color: var(--yy-text);
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.35;
+}
+
+.yy-detail__box p,
+.yy-detail__box ul {
+  margin: 0.35rem 0;
+}
+
+.yy-detail__box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.yy-detail__box li {
+  margin: 0.2rem 0;
+}
+
+.yy-detail__box :where(p, li) {
+  overflow-wrap: anywhere;
+}
+
 .yy-widget__box img,
 .yy-detail__box img {
   max-width: 100%;
@@ -1241,14 +1269,14 @@ html[data-theme="night"] .yy-detail__box {
   display: flex;
   justify-content: center;
   gap: clamp(1rem, 4vw, 2.5rem);
-  margin-top: 1.55rem;
+  margin-top: 1.25rem;
 }
 
 .yy-button {
   position: relative;
   display: inline-flex;
   min-width: 13rem;
-  min-height: 3.1rem;
+  min-height: 2.95rem;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
@@ -1259,6 +1287,13 @@ html[data-theme="night"] .yy-detail__box {
   letter-spacing: 0.15em;
   text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.yy-theme button:focus-visible,
+.yy-locale button:focus-visible,
+.yy-button:focus-visible {
+  outline: 2px solid rgba(184, 138, 59, 0.88);
+  outline-offset: 3px;
 }
 
 .yy-button::before,
@@ -1443,21 +1478,25 @@ html[data-locale="en"] .yy-button {
 }
 
 @media (max-width: 900px) {
-  .yy-shell {
+  html,
+  body {
     overflow-x: hidden;
-    overflow-y: auto;
+  }
+
+  .yy-shell {
+    overflow: visible;
   }
 
   .yy-main {
     flex: 0 0 auto;
     align-items: flex-start;
-    padding-top: 6.6rem;
-    padding-bottom: 1.5rem;
+    padding-top: 6.1rem;
+    padding-bottom: 1.2rem;
   }
 
   .yy-card {
     width: 92vw;
-    padding-top: 4rem;
+    padding-top: 3.75rem;
   }
 
   .yy-card__tools {
@@ -1520,17 +1559,17 @@ html[data-locale="en"] .yy-button {
   }
 
   .yy-main {
-    padding-top: 5.9rem;
-    padding-bottom: 1rem;
+    padding-top: 5.45rem;
+    padding-bottom: 0.9rem;
   }
 
   .yy-card {
     min-height: 0;
-    padding: 5.65rem 1rem 1.35rem;
+    padding: 5.1rem 1rem 1.15rem;
   }
 
   .yy-card__tools {
-    top: 3.05rem;
+    top: 2.72rem;
     right: auto;
     left: 50%;
     transform: translateX(-50%) scale(0.78);
@@ -1553,7 +1592,7 @@ html[data-locale="en"] .yy-button {
   }
 
   .yy-title {
-    font-size: 1.86rem;
+    font-size: 1.72rem;
     letter-spacing: 0.02em;
   }
 
@@ -1568,12 +1607,12 @@ html[data-locale="en"] .yy-button {
   }
 
   .yy-message {
-    font-size: 0.94rem;
-    line-height: 1.75;
+    font-size: 0.92rem;
+    line-height: 1.68;
   }
 
   .yy-card__body {
-    margin-top: 1rem;
+    margin-top: 0.82rem;
   }
 
   .yy-meta__item {
@@ -1581,17 +1620,38 @@ html[data-locale="en"] .yy-button {
   }
 
   .yy-note {
-    margin-top: 0.75rem;
-    line-height: 1.6;
+    margin-top: 0.65rem;
+    line-height: 1.52;
   }
 
   .yy-actions {
     gap: 0.65rem;
-    margin-top: 1rem;
+    margin-top: 0.85rem;
   }
 
   .yy-button {
-    min-height: 2.8rem;
+    min-height: 2.72rem;
+  }
+
+  .yy-widget,
+  .yy-detail {
+    margin-top: 0.75rem;
+    padding: 0.68rem;
+  }
+
+  .yy-widget__box,
+  .yy-detail__box {
+    min-height: 3.9rem;
+  }
+
+  html[data-locale="en"] .yy-title {
+    font-size: 1.68rem;
+    line-height: 1.16;
+  }
+
+  html[data-locale="en"] .yy-message {
+    font-size: 0.9rem;
+    line-height: 1.62;
   }
 
   .yy-card::before {

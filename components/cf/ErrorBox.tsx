@@ -23,7 +23,7 @@ export const ErrorBox = ({ type, box }: ErrorPageConfig) => {
   return (
     <CFCardWrap>
       <Head>
-        <title>{translation.title} - YueYuan</title>
+        <title>{`${translation.title} - YueYuan`}</title>
         <meta name="description" content={translation.message} />
       </Head>
 

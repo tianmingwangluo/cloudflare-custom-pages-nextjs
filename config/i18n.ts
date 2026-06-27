@@ -284,12 +284,12 @@ export const commonTranslations = {
     zh: "当前请求未通过边缘安全校验",
   },
   yueYuanBody: {
-    en: "To protect site stability and data security, this request has been stopped by the edge gateway. Possible causes include unusual request frequency, a suspicious proxy environment, or automated behavior. If you need help, contact the site owner.",
-    zh: "为保障站点稳定与数据安全，系统已拦截此次请求。可能原因：访问频率异常、代理环境可疑或检测到自动化行为。如有疑问，请联系站主协助处理。",
+    en: "To protect the site, YueYuan Edge Security stopped this request. Possible causes include unusual traffic, a suspicious proxy, or automated behavior. Contact the site owner if you need help.",
+    zh: "为保障站点稳定与数据安全，月垣护界已拦截此次请求。可能原因包括访问频率异常、代理环境可疑或自动化行为。如需协助，请联系站主。",
   },
   yueYuanErrorBody: {
-    en: "YueYuan Edge Security is holding this request while the site connection is checked. Please try again later, or share the request ID with the site owner if the problem continues.",
-    zh: "月垣护界正在巡检站点连接状态，本次请求已暂缓通行。请稍后再试；如果问题持续出现，请将请求编号提供给站主协助排查。",
+    en: "YueYuan Edge Security is checking the site connection. Try again later, or share the request ID with the site owner if the problem continues.",
+    zh: "月垣护界正在巡检站点连接状态，本次请求已暂缓通行。请稍后再试；若问题持续，请将请求编号提供给站主排查。",
   },
   yueYuanStatus: {
     en: "Status",
