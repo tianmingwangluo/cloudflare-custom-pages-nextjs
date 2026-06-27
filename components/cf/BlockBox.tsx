@@ -8,6 +8,9 @@ import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
 
+const getScheme = (type: BlockPageConfig["type"]) =>
+  type === "rate-limit" ? "warning" : "danger";
+
 export const BlockBox = ({
   type,
   code,
@@ -15,36 +18,46 @@ export const BlockBox = ({
   networkStatus,
 }: BlockPageConfig) => {
   const translation = blockPageTranslations[type];
+
   return (
     <CFCardWrap>
       <CFCard
         title={translation.title}
         message={translation.message}
-        subtitle="Access Denied"
-        icon={<Icon name={icon} className="h-6 w-6 text-white" />}
-        headerClassName="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950 dark:to-gray-900"
-        scheme="danger"
-      >
-        <div className="space-y-6">
-          <div className="rounded-lg bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/10 p-4 backdrop-blur-sm border border-red-100 dark:border-red-900/50">
-            <div className="font-mono text-sm">
-              <div className="flex items-center gap-2 text-red-700 dark:text-red-400">
-                <span className="font-semibold">Your IP:</span>
-                <code>::CLIENT_IP::</code>
-              </div>
+        subtitle={`访问控制 / HTTP ${code}`}
+        icon={<Icon name={icon} className="h-6 w-6" />}
+        scheme={getScheme(type)}
+        footer={
+          <div className="space-y-8">
+            <NetworkStatusWrapper>
+              <NetworkStatusBox {...networkStatus} />
+            </NetworkStatusWrapper>
 
-              {type === "waf" && (
-                <div className="flex items-center gap-2 text-red-700 dark:text-red-400 mt-2">
-                  <span className="font-semibold">Ray ID:</span>
-                  <code>::RAY_ID::</code>
-                </div>
-              )}
+            <div>
+              <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                处理建议
+              </h2>
+              <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
+                如需协助，请将 Ray ID、访问时间和当前 IP 一并提供给站点管理员。
+              </p>
             </div>
           </div>
+        }
+      >
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="rounded-md border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60">
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">当前 IP</div>
+            <code className="mt-2 block break-all font-mono text-sm text-zinc-900 dark:text-zinc-100">
+              ::CLIENT_IP::
+            </code>
+          </div>
 
-          <NetworkStatusWrapper>
-            <NetworkStatusBox {...networkStatus} />
-          </NetworkStatusWrapper>
+          <div className="rounded-md border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60">
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">Ray ID</div>
+            <code className="mt-2 block break-all font-mono text-sm text-zinc-900 dark:text-zinc-100">
+              ::RAY_ID::
+            </code>
+          </div>
         </div>
       </CFCard>
     </CFCardWrap>

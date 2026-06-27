@@ -6,8 +6,8 @@ interface BaseLayoutProps {
 
 export const BaseLayout = ({ children }: BaseLayoutProps): JSX.Element => {
   return (
-    <div className="relative flex flex-col min-h-screen w-full">
-      <main className="flex-grow pt-3 sm:pt-4 md:pt-6">{children}</main>
+    <div className="min-h-screen w-full bg-[#f7f8f5] text-zinc-950 antialiased dark:bg-[#0d0f0c] dark:text-zinc-50">
+      {children}
     </div>
   );
 };

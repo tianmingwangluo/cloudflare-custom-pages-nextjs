@@ -111,7 +111,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   interactive: {
     type: "interactive",
     code: "403",
-    box: "CAPTCHA_BOX",
+    box: "CF_WIDGET_BOX",
     icon: "shield",
     networkStatus: {
       clientStatus: "challenging",
@@ -121,7 +121,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   managed: {
     type: "managed",
     code: "403",
-    box: "CAPTCHA_BOX",
+    box: "CF_WIDGET_BOX",
     icon: "shield-check",
     networkStatus: {
       clientStatus: "challenging",
@@ -131,7 +131,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   country: {
     type: "country",
     code: "403",
-    box: "CAPTCHA_BOX",
+    box: "CF_WIDGET_BOX",
     icon: "shield-alert",
     networkStatus: {
       clientStatus: "challenging",
@@ -141,7 +141,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
   javascript: {
     type: "javascript",
     code: "403",
-    box: "IM_UNDER_ATTACK_BOX",
+    box: "CF_WIDGET_BOX",
     icon: "shield-ellipsis",
     networkStatus: {
       clientStatus: "challenging",

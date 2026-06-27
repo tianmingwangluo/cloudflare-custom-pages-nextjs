@@ -9,56 +9,42 @@ interface NetworkNodeProps {
   className?: string;
 }
 
-export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
-  const styles = {
-    success: {
-      container:
-        "bg-green-50/80 text-green-600 ring-1 ring-green-100/80 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-900/30",
-      icon: "text-green-500 dark:text-green-400",
-    },
-    error: {
-      container:
-        "bg-red-50/80 text-red-600 ring-1 ring-red-100/80 dark:bg-red-900/20 dark:text-red-300 dark:ring-red-900/30",
-      icon: "text-red-500 dark:text-red-400",
-    },
-    challenging: {
-      container:
-        "bg-orange-50/80 text-orange-600 ring-1 ring-orange-100/80 dark:bg-orange-900/20 dark:text-orange-300 dark:ring-orange-900/30",
-      icon: "text-orange-500 dark:text-orange-400",
-    },
-  }[status];
+const statusConfig = {
+  success: {
+    text: "正常",
+    icon: "check-circle",
+    className:
+      "border-emerald-100 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/40 dark:text-emerald-300",
+  },
+  error: {
+    text: "受限",
+    icon: "x-circle",
+    className:
+      "border-red-100 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-300",
+  },
+  challenging: {
+    text: "验证中",
+    icon: "shield-check",
+    className:
+      "border-amber-100 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-300",
+  },
+} as const;
 
-  const iconName =
-    status === "success"
-      ? "check-circle"
-      : status === "error"
-        ? "x-circle"
-        : "shield-check";
+export const NetworkNode = ({ label, status, className }: NetworkNodeProps) => {
+  const config = statusConfig[status];
 
   return (
     <div
       className={clsx(
-        "px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-medium text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2",
-        "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-100",
-        styles.container,
+        "flex min-h-12 items-center justify-between gap-3 rounded-md border px-3 py-2.5",
+        config.className,
         className,
       )}
     >
-      <Icon
-        name={iconName}
-        className={clsx(
-          "w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform flex-shrink-0",
-          styles.icon,
-          status === "challenging" && "animate-pulse",
-        )}
-      />
-      <span
-        className={clsx(
-          "truncate",
-          status === "challenging" && "animate-pulse",
-        )}
-      >
-        {label}
+      <span className="min-w-0 truncate text-sm font-medium">{label}</span>
+      <span className="inline-flex shrink-0 items-center gap-1.5 text-xs">
+        <Icon name={config.icon} className="h-3.5 w-3.5" />
+        {config.text}
       </span>
     </div>
   );

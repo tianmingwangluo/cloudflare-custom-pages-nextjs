@@ -1,6 +1,5 @@
 import {
   PageWrapper,
-  getStaticPaths as getStaticPathsHelper,
   getStaticProps as getStaticPropsHelper,
 } from "@/components/cf/ui/PageWrapper";
 
@@ -8,10 +7,11 @@ import { type PageType, directories, types } from "@/config/routes";
 
 interface DynamicPageProps {
   pageType: PageType;
+  type: string;
 }
 
-export default function DynamicPage({ pageType }: DynamicPageProps) {
-  return <PageWrapper pageType={pageType} />;
+export default function DynamicPage({ pageType, type }: DynamicPageProps) {
+  return <PageWrapper pageType={pageType} type={type} />;
 }
 
 export async function getStaticPaths() {

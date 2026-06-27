@@ -34,38 +34,36 @@ export interface Section {
 
 export const colorSchemes: Record<ColorScheme, ColorClasses> = {
   danger: {
-    itemBg: "hover:bg-red-50/70 dark:hover:bg-red-900/20 hover:shadow-sm",
-    iconBg:
-      "bg-gradient-to-br from-red-300 to-red-500 dark:from-red-400 dark:to-red-600",
-    iconText: "text-white",
-    codeBg: "bg-red-50/80 dark:bg-red-900/40",
-    codeText: "text-red-600 dark:text-red-400",
-    border: "border-red-100 dark:border-red-900/30",
+    itemBg: "hover:bg-red-50 dark:hover:bg-red-950/30",
+    iconBg: "bg-red-50 dark:bg-red-950/50 ring-red-100 dark:ring-red-900/60",
+    iconText: "text-red-600 dark:text-red-300",
+    codeBg: "bg-red-50 dark:bg-red-950/60",
+    codeText: "text-red-700 dark:text-red-300",
+    border: "border-red-100 dark:border-red-900/50",
   },
   warning: {
-    itemBg: "hover:bg-amber-50/70 dark:hover:bg-amber-900/20 hover:shadow-sm",
+    itemBg: "hover:bg-amber-50 dark:hover:bg-amber-950/30",
     iconBg:
-      "bg-gradient-to-br from-amber-300 to-amber-500 dark:from-amber-400 dark:to-amber-600",
-    iconText: "text-white",
-    codeBg: "bg-amber-50/80 dark:bg-amber-900/40",
-    codeText: "text-amber-600 dark:text-amber-400",
-    border: "border-amber-100 dark:border-amber-900/30",
+      "bg-amber-50 dark:bg-amber-950/50 ring-amber-100 dark:ring-amber-900/60",
+    iconText: "text-amber-700 dark:text-amber-300",
+    codeBg: "bg-amber-50 dark:bg-amber-950/60",
+    codeText: "text-amber-800 dark:text-amber-300",
+    border: "border-amber-100 dark:border-amber-900/50",
   },
   primary: {
-    itemBg: "hover:bg-blue-50/70 dark:hover:bg-blue-900/20 hover:shadow-sm",
-    iconBg:
-      "bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-400 dark:to-blue-600",
-    iconText: "text-white",
-    codeBg: "bg-blue-50/80 dark:bg-blue-900/40",
-    codeText: "text-blue-600 dark:text-blue-400",
-    border: "border-blue-100 dark:border-blue-900/30",
+    itemBg: "hover:bg-sky-50 dark:hover:bg-sky-950/30",
+    iconBg: "bg-sky-50 dark:bg-sky-950/50 ring-sky-100 dark:ring-sky-900/60",
+    iconText: "text-sky-700 dark:text-sky-300",
+    codeBg: "bg-sky-50 dark:bg-sky-950/60",
+    codeText: "text-sky-800 dark:text-sky-300",
+    border: "border-sky-100 dark:border-sky-900/50",
   },
 };
 
 export const sections: Section[] = [
   {
-    title: "Error Pages",
-    description: "Server error pages",
+    title: "错误页面",
+    description: "用于源站异常、DNS 或连接错误场景。",
     icon: "triangle-alert",
     color: "danger",
     pages: Object.entries(errorPages).map(([type, config]) => ({
@@ -76,8 +74,8 @@ export const sections: Section[] = [
     })),
   },
   {
-    title: "Block Pages",
-    description: "Access denied pages",
+    title: "拦截页面",
+    description: "用于 IP、WAF、自定义规则与限速拦截。",
     icon: "lock",
     color: "warning",
     pages: Object.entries(blockPages).map(([type, config]) => ({
@@ -88,13 +86,14 @@ export const sections: Section[] = [
     })),
   },
   {
-    title: "Challenge Pages",
-    description: "Security verification challenges",
+    title: "验证页面",
+    description: "用于托管质询、交互验证与浏览器检查。",
     icon: "shield-check",
     color: "primary",
     pages: Object.entries(challengePages).map(([type, config]) => ({
       title: challengePageTranslations[type].title,
       path: `/cf/challenge/${type}/`,
+      code: config.code,
       icon: config.icon,
     })),
   },

@@ -1,5 +1,4 @@
 import { CFLayout } from "@/components/layout/CFLayout";
-import { Providers } from "@/components/providers";
 import { blockPages, challengePages, errorPages } from "@/config/routes";
 import type {
   BlockPageConfig,
@@ -7,7 +6,6 @@ import type {
   ErrorPageConfig,
 } from "@/config/routes";
 import type { PageType } from "@/config/routes";
-import { useRouter } from "next/router";
 import { BlockBox } from "../BlockBox";
 import { CaptchaBox } from "../CaptchaBox";
 import { ErrorBox } from "../ErrorBox";
@@ -53,26 +51,23 @@ const pageConfigs: {
   },
 };
 
-export function PageWrapper({ pageType }: { pageType: PageType }) {
-  const router = useRouter();
-  const { type } = router.query;
+interface PageWrapperProps {
+  pageType: PageType;
+  type: string;
+}
+
+export function PageWrapper({ pageType, type }: PageWrapperProps) {
   const { pages, defaultType, component: Component } = pageConfigs[pageType];
   const config =
-    typeof type === "string" && type in pages
+    type in pages
       ? pages[type as keyof typeof pages]
       : pages[defaultType as keyof typeof pages];
 
-  if (router.isFallback) {
-    return null;
-  }
-
   return (
-    <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-      <CFLayout>
-        {/* biome-ignore lint/suspicious/noExplicitAny: TypeScript Too HARD */}
-        <Component {...(config as any)} />
-      </CFLayout>
-    </Providers>
+    <CFLayout>
+      {/* biome-ignore lint/suspicious/noExplicitAny: Config union is narrowed by pageType at runtime. */}
+      <Component {...(config as any)} />
+    </CFLayout>
   );
 }
 
@@ -97,6 +92,8 @@ export function getStaticProps(pageType: PageType, params: { type: string }) {
   }
 
   return {
-    props: {},
+    props: {
+      type,
+    },
   };
 }

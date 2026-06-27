@@ -68,8 +68,7 @@
 -   `::GEO::` - 客户端地理位置
 -   `::CLOUDFLARE_ERROR_500S_BOX::` - 500s 错误页面组件
 -   `::CLOUDFLARE_ERROR_1000S_BOX::` - 1000s 错误页面组件
--   `::CAPTCHA_BOX::` - Cloudflare 的 CAPTCHA 组件
--   `::IM_UNDER_ATTACK_BOX::` - Cloudflare 的 JavaScript 挑战组件
+-   `::CF_WIDGET_BOX::` - Cloudflare 的挑战验证组件
 
 ## 🔭 使用指南
 

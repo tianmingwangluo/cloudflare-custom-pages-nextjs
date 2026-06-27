@@ -1,20 +1,17 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Cloudflare WAF Custom Pages",
-  description:
-    "A beautiful, out-of-the-box Cloudflare WAF custom page template.",
+  name: "Cloudflare 安全拦截页",
+  description: "一套简约、克制、中文优先的 Cloudflare WAF 自定义页面模板。",
   headerNavItems: [
     {
-      label: "Home",
+      label: "首页",
       href: "/",
     },
   ],
   links: {
-    // 设置为 "#" 则不会跳转到其他页面。
-    github: "https://github.com/Alice39s/cloudflare-custom-pages-nextjs",
-    docs: "https://github.com/Alice39s/cloudflare-custom-pages-nextjs?tab=readme-ov-file#-usage",
+    github: "https://github.com/tianmingwangluo/cloudflare-custom-pages-nextjs",
+    docs: "https://developers.cloudflare.com/rules/custom-errors/",
   },
-  // 是否输出版权信息, 生产环境建议关闭，如二次开发等情况则建议开启，感谢支持!
-  enableCopyrightConsole: true,
+  enableCopyrightConsole: false,
 };

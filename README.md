@@ -69,8 +69,7 @@ Currently supported automatic variable replacements:
 -   `::GEO::` - Client Geolocation
 -   `::CLOUDFLARE_ERROR_500S_BOX::` - 500s Error Page Component
 -   `::CLOUDFLARE_ERROR_1000S_BOX::` - 1000s Error Page Component
--   `::CAPTCHA_BOX::` - Cloudflare CAPTCHA Component
--   `::IM_UNDER_ATTACK_BOX::` - Cloudflare JavaScript Challenge Component
+-   `::CF_WIDGET_BOX::` - Cloudflare Challenge Widget Component
 
 ## 🔭 Usage
 

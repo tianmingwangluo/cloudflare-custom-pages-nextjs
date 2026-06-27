@@ -2,7 +2,6 @@
 
 import { Icon } from "@/components/ui/icon";
 import type { ColorClasses, Page } from "@/config/home";
-import { Link } from "@heroui/link";
 import { clsx as cx } from "clsx";
 
 interface CardItemProps {
@@ -12,37 +11,34 @@ interface CardItemProps {
 
 export const CardItem = ({ page, classes }: CardItemProps) => {
   return (
-    <Link
+    <a
       href={page.path}
-      isExternal
       className={cx(
-        "group flex items-center justify-between py-2 sm:py-2.5 md:py-3 px-3 sm:px-3.5 md:px-4 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.98]",
+        "group flex min-h-12 items-center justify-between gap-3 rounded-md border border-transparent px-3 py-2.5 transition-colors",
         classes.itemBg,
       )}
     >
-      <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3">
+      <div className="flex min-w-0 items-center gap-3">
         <div
           className={cx(
-            "flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-md sm:rounded-lg shadow-sm",
+            "flex h-8 w-8 shrink-0 items-center justify-center rounded-md ring-1",
             classes.iconBg,
           )}
         >
           {page.icon && (
-            <Icon
-              name={page.icon}
-              className={cx("h-3.5 w-3.5 sm:h-4 sm:w-4", classes.iconText)}
-            />
+            <Icon name={page.icon} className={cx("h-4 w-4", classes.iconText)} />
           )}
         </div>
-        <span className="text-sm sm:text-base text-gray-800 dark:text-gray-200 font-medium">
+        <span className="min-w-0 truncate text-sm font-medium text-zinc-800 dark:text-zinc-200">
           {page.title}
         </span>
       </div>
-      <div className="flex items-center gap-1.5 sm:gap-2">
+
+      <div className="flex shrink-0 items-center gap-2">
         {page.code && (
           <span
             className={cx(
-              "text-xs px-1.5 sm:px-2 py-0.5 font-mono rounded-full",
+              "rounded-md px-2 py-1 font-mono text-xs",
               classes.codeBg,
               classes.codeText,
             )}
@@ -52,12 +48,9 @@ export const CardItem = ({ page, classes }: CardItemProps) => {
         )}
         <Icon
           name="arrow-right"
-          className={cx(
-            "h-3.5 w-3.5 sm:h-4 sm:w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out",
-            classes.iconText,
-          )}
+          className="h-4 w-4 text-zinc-400 transition-transform group-hover:translate-x-0.5 dark:text-zinc-500"
         />
       </div>
-    </Link>
+    </a>
   );
 };

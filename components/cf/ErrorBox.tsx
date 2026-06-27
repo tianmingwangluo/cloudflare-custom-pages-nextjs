@@ -3,7 +3,6 @@
 import { Icon } from "@/components/ui/icon";
 import { errorPageTranslations, interfaceTranslations } from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
-import { Chip } from "@heroui/react";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
@@ -23,47 +22,39 @@ export const ErrorBox = ({
       <CFCard
         title={translation.title}
         message={translation.message}
-        subtitle={
-          <Chip variant="flat" color="danger" size="sm">
-            Error {code}
-          </Chip>
-        }
-        icon={<Icon name={icon} className="text-white w-6 h-6" />}
+        subtitle={`连接错误 / HTTP ${code}`}
+        icon={<Icon name={icon} className="h-6 w-6" />}
         scheme="danger"
-      >
-        <NetworkStatusWrapper>
-          <NetworkStatusBox {...networkStatus} />
-        </NetworkStatusWrapper>
+        footer={
+          <div className="space-y-8">
+            <NetworkStatusWrapper>
+              <NetworkStatusBox {...networkStatus} />
+            </NetworkStatusWrapper>
 
-        {/* 隐藏的 Cloudflare 错误占位符，仅用于服务端注入 */}
-        {type === "1000s" && (
-          <div id="cf-error-1000s-box" className="sr-only" aria-hidden="true">
-            ::CLOUDFLARE_ERROR_1000S_BOX::
-          </div>
-        )}
-
-        {type === "500s" && (
-          <div id="cf-error-500s-box" className="sr-only" aria-hidden="true">
-            ::CLOUDFLARE_ERROR_500S_BOX::
-          </div>
-        )}
-
-        {box && (
-          <div className="mt-3 sm:mt-4 p-3 sm:p-5 backdrop-blur-sm rounded-xl bg-white/50 dark:bg-gray-900/50 border border-gray-100/80 dark:border-gray-800/80">
-            <div className="space-y-2 sm:space-y-3">
-              <h3 className="text-sm sm:text-base font-medium text-gray-900 dark:text-gray-100 flex items-center gap-1.5">
-                <Icon name="info" className="w-4 h-4 text-blue-500" />
-                {interfaceTranslations["error-details"].message}
-              </h3>
-
-              <div className="font-mono text-xs sm:text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800/50 p-3 sm:p-4 rounded-lg overflow-x-auto">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `<div>::${box}::</div>`,
-                  }}
-                />
-              </div>
+            <div>
+              <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                排查提示
+              </h2>
+              <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
+                如果刷新后仍无法访问，请联系站点管理员检查源站、DNS 或安全规则配置。
+              </p>
             </div>
+          </div>
+        }
+      >
+        {box && (
+          <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60">
+            <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <Icon name="info" className="h-4 w-4 text-zinc-500 dark:text-zinc-400" />
+              {interfaceTranslations["error-details"].message}
+            </h2>
+
+            <div
+              className="overflow-x-auto rounded-md bg-white p-4 font-mono text-xs leading-6 text-zinc-600 dark:bg-zinc-950 dark:text-zinc-300"
+              dangerouslySetInnerHTML={{
+                __html: `<div>::${box}::</div>`,
+              }}
+            />
           </div>
         )}
       </CFCard>
