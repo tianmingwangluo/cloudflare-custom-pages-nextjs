@@ -111,15 +111,20 @@ html[data-theme="night"] .yy-shell {
   --yy-red: #e08a70;
   --yy-logo-url: url("/assets/yueyuan-logo-night.png");
   background: radial-gradient(
-      circle at 50% 16%,
-      rgba(255, 245, 209, 0.26),
-      transparent 18rem
+      circle at 50% 44%,
+      rgba(245, 232, 203, 0.18),
+      transparent 19rem
     ),
     radial-gradient(
-      circle at 50% 15%,
-      rgba(198, 144, 68, 0.18),
-      transparent 37rem
-    ), linear-gradient(180deg, #061014 0%, #0b1d22 50%, #081519 100%);
+      ellipse at 18% 78%,
+      rgba(40, 91, 255, 0.22),
+      transparent 34rem
+    ),
+    radial-gradient(
+      ellipse at 82% 18%,
+      rgba(130, 74, 255, 0.2),
+      transparent 30rem
+    ), linear-gradient(135deg, #01030a 0%, #071026 46%, #030512 100%);
   color: var(--yy-ink);
 }
 
@@ -145,18 +150,37 @@ html[data-theme="night"] .yy-shell {
 
 html[data-theme="night"] .yy-shell::before {
   background-image: radial-gradient(
+      ellipse at 50% 48%,
+      rgba(245, 232, 203, 0.24),
+      rgba(66, 94, 255, 0.12) 25%,
+      rgba(143, 90, 255, 0.08) 43%,
+      transparent 67%
+    ),
+    linear-gradient(
+      118deg,
+      transparent 12%,
+      rgba(50, 97, 210, 0.08) 27%,
+      rgba(245, 232, 203, 0.26) 46%,
+      rgba(133, 87, 255, 0.08) 62%,
+      transparent 82%
+    ),
+    radial-gradient(
       circle at 20% 20%,
-      rgba(210, 160, 87, 0.5) 1px,
-      transparent 1.5px
+      rgba(245, 232, 203, 0.86) 0.7px,
+      transparent 1.7px
     ),
     radial-gradient(
       circle at 74% 14%,
-      rgba(210, 160, 87, 0.42) 1px,
-      transparent 1.4px
-    ), linear-gradient(rgba(210, 160, 87, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(210, 160, 87, 0.06) 1px, transparent 1px);
-  background-size: 220px 220px, 170px 170px, 120px 120px, 120px 120px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.86), transparent 70%);
+      rgba(179, 199, 255, 0.64) 0.9px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 46% 68%,
+      rgba(210, 160, 87, 0.58) 0.7px,
+      transparent 1.7px
+    );
+  background-size: auto, auto, 180px 180px, 240px 240px, 130px 130px;
+  mask-image: none;
 }
 
 .yy-scenery {
@@ -198,8 +222,31 @@ html[data-theme="night"] .yy-shell::before {
 }
 
 html[data-theme="night"] .yy-scenery::before {
-  opacity: 0.44;
-  filter: drop-shadow(0 0 40px rgba(210, 160, 87, 0.08));
+  top: 4%;
+  width: min(82rem, 118vw);
+  height: min(46rem, 68vw);
+  transform: translateX(-50%) rotate(-13deg);
+  border-radius: 50%;
+  background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(245, 232, 203, 0.34),
+      rgba(117, 142, 255, 0.22) 20%,
+      rgba(111, 66, 255, 0.12) 38%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse at 58% 45%,
+      rgba(255, 255, 255, 0.2),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 35% 55%,
+      rgba(62, 105, 255, 0.2),
+      transparent 42%
+    );
+  mask-image: radial-gradient(ellipse, #000 0 46%, transparent 72%);
+  opacity: 0.58;
+  filter: blur(10px) drop-shadow(0 0 42px rgba(89, 119, 255, 0.24));
 }
 
 .yy-scenery::after {
@@ -224,18 +271,28 @@ html[data-theme="night"] .yy-scenery::before {
 }
 
 html[data-theme="night"] .yy-scenery::after {
-  background: radial-gradient(
-      ellipse at 50% 0%,
-      rgba(210, 160, 87, 0.11),
-      transparent 58%
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 10% 16%,
+      rgba(255, 255, 255, 0.74) 0.8px,
+      transparent 1.8px
     ),
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(10, 32, 36, 0.7) 48%,
-      rgba(4, 15, 19, 0.9) 100%
+    radial-gradient(
+      circle at 84% 28%,
+      rgba(180, 204, 255, 0.72) 0.9px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 58% 78%,
+      rgba(245, 232, 203, 0.62) 0.7px,
+      transparent 1.8px
     );
-  opacity: 0.82;
+  background-size: 230px 230px, 310px 310px, 170px 170px;
+  opacity: 0.8;
 }
 
 .yy-orbit {
@@ -252,9 +309,7 @@ html[data-theme="night"] .yy-scenery::after {
 }
 
 html[data-theme="night"] .yy-orbit {
-  border-color: rgba(210, 160, 87, 0.36);
-  opacity: 0.78;
-  box-shadow: 0 0 80px rgba(210, 160, 87, 0.1);
+  display: none;
 }
 
 .yy-orbit::before,
@@ -304,8 +359,7 @@ html[data-theme="night"] .yy-orbit {
 }
 
 html[data-theme="night"] .yy-cloud {
-  opacity: 0.48;
-  filter: drop-shadow(0 0 8px rgba(210, 160, 87, 0.08));
+  display: none;
 }
 
 .yy-cloud--left {
@@ -357,8 +411,7 @@ html[data-theme="night"] .yy-cloud {
 }
 
 html[data-theme="night"] .yy-wall {
-  opacity: 0.5;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+  display: none;
 }
 
 .yy-mountain {
@@ -391,11 +444,7 @@ html[data-theme="night"] .yy-wall {
 }
 
 html[data-theme="night"] .yy-mountain {
-  background: linear-gradient(
-    180deg,
-    rgba(44, 81, 82, 0.22),
-    rgba(6, 18, 22, 0.88)
-  );
+  display: none;
 }
 
 .yy-mountain--back {
@@ -431,11 +480,7 @@ html[data-theme="night"] .yy-mountain {
 }
 
 html[data-theme="night"] .yy-mountain--middle {
-  background: linear-gradient(
-    180deg,
-    rgba(55, 95, 92, 0.26),
-    rgba(7, 25, 29, 0.92)
-  );
+  display: none;
 }
 
 .yy-mountain--front {
@@ -470,17 +515,7 @@ html[data-theme="night"] .yy-mountain--middle {
 }
 
 html[data-theme="night"] .yy-mountain--front {
-  background: linear-gradient(
-      180deg,
-      rgba(210, 160, 87, 0.04),
-      rgba(3, 13, 17, 0.96)
-    ),
-    linear-gradient(
-      90deg,
-      rgba(210, 160, 87, 0.18),
-      transparent 40%,
-      rgba(210, 160, 87, 0.14)
-    );
+  display: none;
 }
 
 .yy-brand {
@@ -663,17 +698,27 @@ html[data-theme="night"] .yy-card {
 html[data-theme="night"] .yy-card::before {
   border-color: rgba(210, 160, 87, 0.32);
   background: radial-gradient(
-      ellipse at 18% 28%,
-      transparent 32%,
-      rgba(210, 160, 87, 0.16) 33%,
-      transparent 35%
+      circle at 50% 16%,
+      rgba(245, 232, 203, 0.08),
+      transparent 16rem
     ),
     radial-gradient(
-      ellipse at 82% 29%,
-      transparent 32%,
-      rgba(210, 160, 87, 0.12) 33%,
-      transparent 35%
+      ellipse at 50% 72%,
+      rgba(83, 111, 255, 0.08),
+      transparent 24rem
+    ),
+    radial-gradient(
+      circle at 18% 24%,
+      rgba(245, 232, 203, 0.46) 0.7px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 82% 32%,
+      rgba(179, 199, 255, 0.36) 0.8px,
+      transparent 1.8px
     );
+  background-size: auto, auto, 180px 180px, 220px 220px;
+  opacity: 0.72;
 }
 
 .yy-card > * {
@@ -748,7 +793,7 @@ html[data-theme="night"] .yy-card::before {
 .yy-card__tools {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  right: 3rem;
   z-index: 3;
   display: flex;
   align-items: stretch;
@@ -1275,7 +1320,7 @@ html[data-locale="en"] .yy-button {
 
   .yy-card__tools {
     top: 0.8rem;
-    right: 0.8rem;
+    right: 2.65rem;
     transform: scale(0.9);
     transform-origin: top right;
   }
@@ -1339,7 +1384,15 @@ html[data-locale="en"] .yy-button {
 
   .yy-card {
     min-height: 0;
-    padding: 3.35rem 1rem 1.35rem;
+    padding: 5.65rem 1rem 1.35rem;
+  }
+
+  .yy-card__tools {
+    top: 3.05rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) scale(0.78);
+    transform-origin: top center;
   }
 
   .yy-card__rule {
