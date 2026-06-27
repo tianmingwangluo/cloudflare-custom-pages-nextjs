@@ -7,7 +7,11 @@ import Head from "next/head";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Providers
-      themeProps={{ attribute: "class", defaultTheme: "system", enableSystem: true }}
+      themeProps={{
+        attribute: "class",
+        defaultTheme: "system",
+        enableSystem: true,
+      }}
     >
       <Head>
         <title>{siteConfig.name.en}</title>

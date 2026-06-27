@@ -26,7 +26,10 @@ export const CardItem = ({ page, classes }: CardItemProps) => {
           )}
         >
           {page.icon && (
-            <Icon name={page.icon} className={cx("h-4 w-4", classes.iconText)} />
+            <Icon
+              name={page.icon}
+              className={cx("h-4 w-4", classes.iconText)}
+            />
           )}
         </div>
         <span className="min-w-0 truncate text-sm font-medium text-zinc-800 dark:text-zinc-200">

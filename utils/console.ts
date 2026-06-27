@@ -1,7 +1,7 @@
 "use client";
 
-import pkg from "@/package.json" assert { type: "json" };
 import { siteConfig } from "@/config/site";
+import pkg from "@/package.json" assert { type: "json" };
 
 const print = () => {
   if (!siteConfig.enableCopyrightConsole) {

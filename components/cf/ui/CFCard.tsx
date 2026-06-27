@@ -70,10 +70,7 @@ export const CFCard = ({
             <div className="mb-10 flex items-center justify-between gap-4">
               {subtitle && (
                 <div
-                  className={cx(
-                    "min-w-0 text-xs font-medium",
-                    classes.badge,
-                  )}
+                  className={cx("min-w-0 text-xs font-medium", classes.badge)}
                 >
                   {subtitle}
                 </div>

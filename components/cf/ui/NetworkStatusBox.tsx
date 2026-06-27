@@ -22,17 +22,22 @@ export const NetworkStatusBox = ({
   return (
     <div className={clsx("grid gap-2.5", className)}>
       <NetworkNode
-        label={translate(interfaceTranslations["network-status-you"], locale).message}
+        label={
+          translate(interfaceTranslations["network-status-you"], locale).message
+        }
         status={clientStatus}
       />
       <NetworkNode
-        label={translate(interfaceTranslations["network-status-cdn"], locale).message}
+        label={
+          translate(interfaceTranslations["network-status-cdn"], locale).message
+        }
         status={edgeStatus}
       />
       {originStatus && (
         <NetworkNode
           label={
-            translate(interfaceTranslations["network-status-origin"], locale).message
+            translate(interfaceTranslations["network-status-origin"], locale)
+              .message
           }
           status={originStatus}
         />

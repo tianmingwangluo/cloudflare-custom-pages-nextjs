@@ -9,11 +9,11 @@ import {
   translate,
 } from "@/config/i18n";
 import type { ErrorPageConfig } from "@/config/routes";
+import Head from "next/head";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
-import Head from "next/head";
 
 export const ErrorBox = ({
   type,
@@ -62,8 +62,14 @@ export const ErrorBox = ({
         {box && (
           <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60">
             <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-              <Icon name="info" className="h-4 w-4 text-zinc-500 dark:text-zinc-400" />
-              {translate(interfaceTranslations["error-details"], locale).message}
+              <Icon
+                name="info"
+                className="h-4 w-4 text-zinc-500 dark:text-zinc-400"
+              />
+              {
+                translate(interfaceTranslations["error-details"], locale)
+                  .message
+              }
             </h2>
 
             <div

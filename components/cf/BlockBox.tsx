@@ -8,11 +8,11 @@ import {
   translate,
 } from "@/config/i18n";
 import type { BlockPageConfig } from "@/config/routes";
+import Head from "next/head";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
-import Head from "next/head";
 
 const getScheme = (type: BlockPageConfig["type"]) =>
   type === "rate-limit" ? "warning" : "danger";
@@ -69,7 +69,9 @@ export const BlockBox = ({
           </div>
 
           <div className="rounded-md border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60">
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Ray ID</div>
+            <div className="text-xs text-zinc-500 dark:text-zinc-400">
+              Ray ID
+            </div>
             <code className="mt-2 block break-all font-mono text-sm text-zinc-900 dark:text-zinc-100">
               ::RAY_ID::
             </code>

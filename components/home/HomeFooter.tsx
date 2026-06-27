@@ -1,14 +1,10 @@
 "use client";
 
-import { useLocale } from "@/components/i18n/use-locale";
 import { LanguageSwitch } from "@/components/i18n/language-switch";
+import { useLocale } from "@/components/i18n/use-locale";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Icon } from "@/components/ui/icon";
-import {
-  commonTranslations,
-  translate,
-  type Localized,
-} from "@/config/i18n";
+import { type Localized, commonTranslations, translate } from "@/config/i18n";
 import type { IconKey } from "@/config/icons";
 import { siteConfig } from "@/config/site";
 import print from "@/utils/console";

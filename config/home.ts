@@ -1,9 +1,9 @@
 import {
+  type Locale,
+  type Localized,
   blockPageTranslations,
   challengePageTranslations,
   errorPageTranslations,
-  type Locale,
-  type Localized,
   translate,
 } from "./i18n";
 import type { IconKey } from "./icons";
@@ -59,7 +59,8 @@ const sectionTranslations = {
   challenge: {
     en: {
       title: "Challenge pages",
-      description: "For managed challenges, interactive checks, and browser verification.",
+      description:
+        "For managed challenges, interactive checks, and browser verification.",
     },
     zh: {
       title: "验证页面",

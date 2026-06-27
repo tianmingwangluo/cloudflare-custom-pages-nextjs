@@ -8,11 +8,11 @@ import {
   translate,
 } from "@/config/i18n";
 import type { ChallengePageConfig } from "@/config/routes";
+import Head from "next/head";
 import { CFCard } from "./ui/CFCard";
 import { CFCardWrap } from "./ui/CFCardWrapper";
 import { NetworkStatusBox } from "./ui/NetworkStatusBox";
 import { NetworkStatusWrapper } from "./ui/NetworkStatusWrapper";
-import Head from "next/head";
 
 export const CaptchaBox = ({
   type,

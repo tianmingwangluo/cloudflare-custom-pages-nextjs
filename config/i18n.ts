@@ -149,35 +149,36 @@ export const challengePageTranslations: Record<
     },
     zh: {
       title: "正在确认访问环境",
-      message:
-        "安全系统正在检查浏览器环境，请保持此页面打开，稍候片刻。",
+      message: "安全系统正在检查浏览器环境，请保持此页面打开，稍候片刻。",
     },
   },
 } as const;
 
-export const interfaceTranslations: Record<string, Localized<InterfaceTranslations>> =
-  {
-    "error-details": {
-      en: { message: "Cloudflare response" },
-      zh: { message: "Cloudflare 返回信息" },
-    },
-    "connection-tracking": {
-      en: { message: "Connection status" },
-      zh: { message: "连接状态" },
-    },
-    "network-status-you": {
-      en: { message: "Visitor" },
-      zh: { message: "访客" },
-    },
-    "network-status-cdn": {
-      en: { message: "Edge node" },
-      zh: { message: "边缘节点" },
-    },
-    "network-status-origin": {
-      en: { message: "Origin" },
-      zh: { message: "源站" },
-    },
-  } as const;
+export const interfaceTranslations: Record<
+  string,
+  Localized<InterfaceTranslations>
+> = {
+  "error-details": {
+    en: { message: "Cloudflare response" },
+    zh: { message: "Cloudflare 返回信息" },
+  },
+  "connection-tracking": {
+    en: { message: "Connection status" },
+    zh: { message: "连接状态" },
+  },
+  "network-status-you": {
+    en: { message: "Visitor" },
+    zh: { message: "访客" },
+  },
+  "network-status-cdn": {
+    en: { message: "Edge node" },
+    zh: { message: "边缘节点" },
+  },
+  "network-status-origin": {
+    en: { message: "Origin" },
+    zh: { message: "源站" },
+  },
+} as const;
 
 export const statusTranslations = {
   success: {

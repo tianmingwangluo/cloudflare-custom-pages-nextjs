@@ -32,7 +32,10 @@ export const Footer = memo(() => {
   return (
     <footer className="rounded-lg border border-zinc-200 bg-white/70 px-4 py-3 shadow-sm backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/60">
       <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
-        <InfoItem label={translate(commonTranslations.region, locale)} value="::GEO::" />
+        <InfoItem
+          label={translate(commonTranslations.region, locale)}
+          value="::GEO::"
+        />
         <Separator />
         <InfoItem label="IP" value="::CLIENT_IP::" />
         <Separator />

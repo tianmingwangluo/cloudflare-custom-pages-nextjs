@@ -1,15 +1,12 @@
 "use client";
 
-import {
-  setPreferredLocale,
-  useLocale,
-} from "@/components/i18n/use-locale";
+import { setPreferredLocale, useLocale } from "@/components/i18n/use-locale";
 import { Icon } from "@/components/ui/icon";
 import {
-  commonTranslations,
-  translate,
   type Locale,
   type Localized,
+  commonTranslations,
+  translate,
 } from "@/config/i18n";
 import { clsx as cx } from "clsx";
 import type { FC } from "react";
@@ -41,14 +38,16 @@ export const LanguageSwitch: FC<LanguageSwitchProps> = ({ className }) => {
   const locale = useLocale();
 
   return (
-    <div
-      role="group"
-      aria-label={translate(commonTranslations.languageSwitch, locale)}
+    <fieldset
       className={cx(
-        "inline-flex h-9 shrink-0 items-stretch overflow-hidden rounded-md border border-zinc-200 bg-white text-xs font-medium shadow-sm dark:border-zinc-800 dark:bg-zinc-950",
+        "m-0 inline-flex h-9 min-w-0 shrink-0 items-stretch overflow-hidden rounded-md border border-zinc-200 bg-white p-0 text-xs font-medium shadow-sm dark:border-zinc-800 dark:bg-zinc-950",
         className,
       )}
     >
+      <legend className="sr-only">
+        {translate(commonTranslations.languageSwitch, locale)}
+      </legend>
+
       <span className="flex w-9 items-center justify-center border-r border-zinc-200 text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
         <Icon name="languages" className="h-4 w-4" aria-hidden="true" />
       </span>
@@ -76,6 +75,6 @@ export const LanguageSwitch: FC<LanguageSwitchProps> = ({ className }) => {
           </button>
         );
       })}
-    </div>
+    </fieldset>
   );
 };

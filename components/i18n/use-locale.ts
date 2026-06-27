@@ -1,11 +1,11 @@
 "use client";
 
 import {
+  type Locale,
+  type Localized,
   defaultLocale,
   pickLocale,
   translate,
-  type Locale,
-  type Localized,
 } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 import { useEffect, useState } from "react";
@@ -64,7 +64,9 @@ function getStoredLocale(): Locale | undefined {
 }
 
 function getInitialLocale(): Locale {
-  return getUrlLocale() ?? getStoredLocale() ?? pickLocale(getBrowserLanguages());
+  return (
+    getUrlLocale() ?? getStoredLocale() ?? pickLocale(getBrowserLanguages())
+  );
 }
 
 function applyDocumentLocale(locale: Locale) {
@@ -114,7 +116,8 @@ export function useLocale(): Locale {
         return;
       }
 
-      const storedLocale = normalizeLocale(event.newValue) ?? getInitialLocale();
+      const storedLocale =
+        normalizeLocale(event.newValue) ?? getInitialLocale();
       setLocale(storedLocale);
       applyDocumentLocale(storedLocale);
     };

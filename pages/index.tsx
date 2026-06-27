@@ -1,9 +1,9 @@
 "use client";
 
-import { useLocale } from "@/components/i18n/use-locale";
 import { Hero } from "@/components/home/Hero";
 import HomeFooter from "@/components/home/HomeFooter";
 import { CardSection } from "@/components/home/ui/card-section";
+import { useLocale } from "@/components/i18n/use-locale";
 import { getSections } from "@/config/home";
 
 export default function Home() {
