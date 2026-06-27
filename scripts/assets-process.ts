@@ -164,7 +164,7 @@ function getCloudflareInlineCss(): string {
       ? source.slice(start + cloudflareCssStart.length, end).trim()
       : source;
 
-  return `
+  return inlinePublicAssetUrls(`
 *,*::before,*::after{box-sizing:border-box}
 html,body,#__next{min-height:100%;margin:0}
 body{margin:0}
@@ -174,7 +174,38 @@ button{font:inherit}
 :root{--font-mono:"SFMono-Regular","Consolas","Liberation Mono",ui-monospace,monospace}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 ${yueYuanCss}
-`.trim();
+`).trim();
+}
+
+function inlinePublicAssetUrls(css: string): string {
+  return css.replace(
+    /url\((["']?)(\/assets\/[^"')]+)\1\)/g,
+    (match, _quote, assetUrl: string) => {
+      const assetPath = path.join(
+        process.cwd(),
+        "public",
+        assetUrl.replace(/^\/+/, ""),
+      );
+
+      if (!fs.existsSync(assetPath)) {
+        console.warn(`Public asset not found for inlining: ${assetUrl}`);
+        return match;
+      }
+
+      const extension = path.extname(assetPath).toLowerCase();
+      const mimeType =
+        extension === ".svg"
+          ? "image/svg+xml"
+          : extension === ".webp"
+            ? "image/webp"
+            : extension === ".jpg" || extension === ".jpeg"
+              ? "image/jpeg"
+              : "image/png";
+      const data = fs.readFileSync(assetPath).toString("base64");
+
+      return `url("data:${mimeType};base64,${data}")`;
+    },
+  );
 }
 
 function inlineLocalStyles($: cheerio.CheerioAPI): void {
@@ -251,14 +282,24 @@ function appendStandaloneLocaleScript(
   $script.attr("data-description-zh", description.zh);
   $script.text(`(function(){
 var key="cloudflare-custom-pages-locale";
+var themeKey="cloudflare-custom-pages-theme";
 function each(selector,callback){Array.prototype.forEach.call(document.querySelectorAll(selector),callback);}
 function normalize(value){value=String(value||"").toLowerCase();if(value.indexOf("zh")===0){return "zh";}if(value.indexOf("en")===0){return "en";}return "";}
+function normalizeTheme(value){value=String(value||"").toLowerCase();if(value==="day"||value==="light"){return "day";}if(value==="night"||value==="dark"){return "night";}return "";}
 function urlLocale(){try{return normalize(new URLSearchParams(window.location.search).get("lang"));}catch(error){return "";}}
+function urlTheme(){try{return normalizeTheme(new URLSearchParams(window.location.search).get("theme"));}catch(error){return "";}}
 function storedLocale(){try{return normalize(window.localStorage.getItem(key));}catch(error){return "";}}
+function storedTheme(){try{return normalizeTheme(window.localStorage.getItem(themeKey));}catch(error){return "";}}
 function browserLocale(){var list=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language];for(var i=0;i<list.length;i++){var locale=normalize(list[i]);if(locale){return locale;}}return "en";}
+function defaultTheme(){return "day";}
 function setStored(locale){try{window.localStorage.setItem(key,locale);}catch(error){}}
+function setStoredTheme(theme){try{window.localStorage.setItem(themeKey,theme);}catch(error){}}
 function setAttribute(selector,name,locale){each(selector,function(node){var value=node.getAttribute("data-l10n-"+name+"-"+locale);if(value){node.setAttribute(name,value);}});}
 function applyRayFallback(){each("[data-ray-id]",function(node){var value=(node.textContent||"").replace(/^\\s+|\\s+$/g,"");if(!value||value.indexOf("::RAY_ID::")!==-1){node.textContent="7F4C-9A21-RAY";}});}
+function applyTheme(theme){
+document.documentElement.setAttribute("data-theme",theme);
+each("[data-theme-button]",function(button){button.setAttribute("aria-pressed",button.getAttribute("data-theme-button")===theme?"true":"false");});
+}
 function apply(locale){
 document.documentElement.lang=locale==="zh"?"zh-CN":"en";
 document.documentElement.setAttribute("data-locale",locale);
@@ -275,6 +316,8 @@ if(meta&&description){meta.setAttribute("content",description);}
 each("[data-locale-button]",function(button){button.setAttribute("aria-pressed",button.getAttribute("data-locale-button")===locale?"true":"false");});
 }
 each("[data-locale-button]",function(button){button.addEventListener("click",function(){var locale=normalize(button.getAttribute("data-locale-button"))||"en";setStored(locale);apply(locale);});});
+each("[data-theme-button]",function(button){button.addEventListener("click",function(){var theme=normalizeTheme(button.getAttribute("data-theme-button"))||"day";setStoredTheme(theme);applyTheme(theme);});});
+applyTheme(urlTheme()||storedTheme()||defaultTheme());
 apply(urlLocale()||storedLocale()||browserLocale());
 applyRayFallback();
 })();`);
@@ -401,6 +444,13 @@ function applyStandaloneLocalization(
   const languageSwitch = getLocalizedPair(commonTranslations.languageSwitch);
   const switchToEnglish = getLocalizedPair(commonTranslations.switchToEnglish);
   const switchToChinese = getLocalizedPair(commonTranslations.switchToChinese);
+  const themeSwitch = getLocalizedPair(commonTranslations.themeSwitch);
+  const switchToDayTheme = getLocalizedPair(
+    commonTranslations.switchToDayTheme,
+  );
+  const switchToNightTheme = getLocalizedPair(
+    commonTranslations.switchToNightTheme,
+  );
   setLocalizedText(
     $,
     ".yy-locale legend",
@@ -420,6 +470,21 @@ function applyStandaloneLocalization(
     "aria-label",
     switchToChinese.en,
     switchToChinese.zh,
+  );
+  setLocalizedText($, ".yy-theme legend", themeSwitch.en, themeSwitch.zh);
+  setLocalizedAttr(
+    $,
+    '[data-theme-button="day"]',
+    "aria-label",
+    switchToDayTheme.en,
+    switchToDayTheme.zh,
+  );
+  setLocalizedAttr(
+    $,
+    '[data-theme-button="night"]',
+    "aria-label",
+    switchToNightTheme.en,
+    switchToNightTheme.zh,
   );
 
   appendStandaloneLocaleScript(

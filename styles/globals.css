@@ -70,6 +70,7 @@ pre {
   --yy-gold-dark: #a77a32;
   --yy-green: #2f655b;
   --yy-red: #b85c4a;
+  --yy-logo-url: url("/assets/yueyuan-logo-day.png");
   position: relative;
   isolation: isolate;
   display: flex;
@@ -77,13 +78,49 @@ pre {
   flex-direction: column;
   overflow: hidden;
   background: radial-gradient(
-      circle at 50% 13%,
-      rgba(255, 255, 255, 0.86),
-      transparent 22rem
-    ), linear-gradient(180deg, #edf5f0 0%, var(--yy-bg) 44%, #e6eee5 100%);
+      ellipse at 50% 9%,
+      rgba(255, 255, 255, 0.92),
+      transparent 25rem
+    ),
+    radial-gradient(
+      ellipse at 16% 28%,
+      rgba(232, 238, 222, 0.78),
+      transparent 32rem
+    ),
+    radial-gradient(
+      ellipse at 84% 25%,
+      rgba(243, 228, 191, 0.45),
+      transparent 30rem
+    ), linear-gradient(180deg, #eff6f1 0%, var(--yy-bg) 46%, #e1ebe3 100%);
   color: var(--yy-ink);
   font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun",
     "Times New Roman", serif;
+}
+
+html[data-theme="night"] .yy-shell {
+  --yy-paper: #f5e8cb;
+  --yy-paper-soft: rgba(11, 30, 33, 0.86);
+  --yy-bg: #071519;
+  --yy-mist: #102d32;
+  --yy-ink: #f3e5c9;
+  --yy-text: #dacfb9;
+  --yy-muted: #93a9a4;
+  --yy-gold: #d1a057;
+  --yy-gold-dark: #c28a3d;
+  --yy-green: #244f4c;
+  --yy-red: #e08a70;
+  --yy-logo-url: url("/assets/yueyuan-logo-night.png");
+  background: radial-gradient(
+      circle at 50% 16%,
+      rgba(255, 245, 209, 0.26),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(198, 144, 68, 0.18),
+      transparent 37rem
+    ), linear-gradient(180deg, #061014 0%, #0b1d22 50%, #081519 100%);
+  color: var(--yy-ink);
 }
 
 .yy-shell::before {
@@ -91,12 +128,35 @@ pre {
   inset: 0;
   z-index: -3;
   content: "";
-  background-image: linear-gradient(
-      rgba(184, 138, 59, 0.08) 1px,
-      transparent 1px
-    ), linear-gradient(90deg, rgba(184, 138, 59, 0.06) 1px, transparent 1px);
-  background-size: 120px 120px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 58%);
+  background-image: radial-gradient(
+      circle at 18% 18%,
+      rgba(184, 138, 59, 0.12) 0,
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at 82% 16%,
+      rgba(184, 138, 59, 0.1) 0,
+      transparent 17rem
+    ), linear-gradient(rgba(47, 101, 91, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 101, 91, 0.028) 1px, transparent 1px);
+  background-size: auto, auto, 96px 96px, 96px 96px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 62%);
+}
+
+html[data-theme="night"] .yy-shell::before {
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(210, 160, 87, 0.5) 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 74% 14%,
+      rgba(210, 160, 87, 0.42) 1px,
+      transparent 1.4px
+    ), linear-gradient(rgba(210, 160, 87, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(210, 160, 87, 0.06) 1px, transparent 1px);
+  background-size: 220px 220px, 170px 170px, 120px 120px, 120px 120px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.86), transparent 70%);
 }
 
 .yy-scenery {
@@ -107,17 +167,94 @@ pre {
   pointer-events: none;
 }
 
+.yy-scenery::before {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  width: min(58rem, 76vw);
+  height: min(58rem, 76vw);
+  content: "";
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: repeating-conic-gradient(
+      from 8deg,
+      rgba(184, 138, 59, 0.18) 0deg 0.7deg,
+      transparent 0.7deg 18deg
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 42%,
+      rgba(184, 138, 59, 0.18) 42.2% 42.45%,
+      transparent 42.7%
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 60%,
+      rgba(184, 138, 59, 0.13) 60.2% 60.45%,
+      transparent 60.7%
+    );
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 78%);
+  opacity: 0.32;
+}
+
+html[data-theme="night"] .yy-scenery::before {
+  opacity: 0.44;
+  filter: drop-shadow(0 0 40px rgba(210, 160, 87, 0.08));
+}
+
+.yy-scenery::after {
+  position: absolute;
+  right: -10%;
+  bottom: 5%;
+  left: -10%;
+  height: 34vh;
+  content: "";
+  background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255, 255, 255, 0.58),
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(234, 241, 234, 0.76) 48%,
+      rgba(209, 225, 214, 0.68) 100%
+    );
+  opacity: 0.72;
+}
+
+html[data-theme="night"] .yy-scenery::after {
+  background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(210, 160, 87, 0.11),
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(10, 32, 36, 0.7) 48%,
+      rgba(4, 15, 19, 0.9) 100%
+    );
+  opacity: 0.82;
+}
+
 .yy-orbit {
   position: absolute;
-  top: -10rem;
+  top: -12rem;
   left: 50%;
-  width: min(66rem, 92vw);
+  width: min(62rem, 88vw);
   aspect-ratio: 1;
   transform: translateX(-50%);
-  border: 1px solid rgba(184, 138, 59, 0.3);
+  border: 1px solid rgba(184, 138, 59, 0.22);
   border-radius: 999px;
-  opacity: 0.62;
+  opacity: 0.42;
   animation: yy-orbit 92s linear infinite;
+}
+
+html[data-theme="night"] .yy-orbit {
+  border-color: rgba(210, 160, 87, 0.36);
+  opacity: 0.78;
+  box-shadow: 0 0 80px rgba(210, 160, 87, 0.1);
 }
 
 .yy-orbit::before,
@@ -125,20 +262,14 @@ pre {
   position: absolute;
   inset: 9%;
   content: "";
-  border: 1px solid rgba(184, 138, 59, 0.2);
+  border: 1px solid rgba(184, 138, 59, 0.14);
   border-radius: inherit;
-  background: linear-gradient(
-      90deg,
-      transparent 49.8%,
-      rgba(184, 138, 59, 0.28) 50%,
-      transparent 50.2%
-    ),
-    linear-gradient(
-      0deg,
-      transparent 49.8%,
-      rgba(184, 138, 59, 0.18) 50%,
-      transparent 50.2%
-    );
+  background: radial-gradient(
+    circle,
+    transparent 0 48%,
+    rgba(184, 138, 59, 0.12) 48.2% 48.45%,
+    transparent 48.7%
+  );
 }
 
 .yy-orbit::after {
@@ -149,45 +280,42 @@ pre {
 
 .yy-cloud {
   position: absolute;
-  width: 22rem;
-  height: 9rem;
-  opacity: 0.35;
-  filter: blur(0.2px);
+  width: 34rem;
+  height: 14rem;
+  opacity: 0.34;
+  filter: blur(10px);
   background: radial-gradient(
-      ellipse at 18% 55%,
-      transparent 30%,
-      rgba(184, 138, 59, 0.72) 31%,
-      transparent 33%
+      ellipse at 22% 58%,
+      rgba(255, 255, 255, 0.72),
+      transparent 48%
     ),
     radial-gradient(
       ellipse at 44% 42%,
-      transparent 30%,
-      rgba(184, 138, 59, 0.62) 31%,
-      transparent 33%
+      rgba(234, 241, 234, 0.72),
+      transparent 52%
     ),
     radial-gradient(
       ellipse at 72% 56%,
-      transparent 31%,
-      rgba(184, 138, 59, 0.54) 32%,
-      transparent 34%
+      rgba(184, 138, 59, 0.16),
+      transparent 46%
     ),
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 8%,
-      rgba(184, 138, 59, 0.44) 9%,
-      transparent 70%
-    );
+    linear-gradient(90deg, transparent, rgba(184, 138, 59, 0.12), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 20% 80%, transparent);
+}
+
+html[data-theme="night"] .yy-cloud {
+  opacity: 0.48;
+  filter: drop-shadow(0 0 8px rgba(210, 160, 87, 0.08));
 }
 
 .yy-cloud--left {
-  top: 18%;
-  left: -5rem;
+  top: 17%;
+  left: -9rem;
 }
 
 .yy-cloud--right {
-  top: 7%;
-  right: -3rem;
+  top: 8%;
+  right: -11rem;
   transform: scaleX(-1);
 }
 
@@ -228,6 +356,11 @@ pre {
   border-bottom: 1px solid rgba(167, 122, 50, 0.32);
 }
 
+html[data-theme="night"] .yy-wall {
+  opacity: 0.5;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+}
+
 .yy-mountain {
   position: absolute;
   right: -8%;
@@ -254,6 +387,14 @@ pre {
     100% 45%,
     100% 100%,
     0 100%
+  );
+}
+
+html[data-theme="night"] .yy-mountain {
+  background: linear-gradient(
+    180deg,
+    rgba(44, 81, 82, 0.22),
+    rgba(6, 18, 22, 0.88)
   );
 }
 
@@ -289,6 +430,14 @@ pre {
   );
 }
 
+html[data-theme="night"] .yy-mountain--middle {
+  background: linear-gradient(
+    180deg,
+    rgba(55, 95, 92, 0.26),
+    rgba(7, 25, 29, 0.92)
+  );
+}
+
 .yy-mountain--front {
   bottom: -8%;
   opacity: 0.5;
@@ -320,6 +469,20 @@ pre {
   );
 }
 
+html[data-theme="night"] .yy-mountain--front {
+  background: linear-gradient(
+      180deg,
+      rgba(210, 160, 87, 0.04),
+      rgba(3, 13, 17, 0.96)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(210, 160, 87, 0.18),
+      transparent 40%,
+      rgba(210, 160, 87, 0.14)
+    );
+}
+
 .yy-brand {
   position: absolute;
   top: clamp(1rem, 3vw, 2rem);
@@ -333,6 +496,11 @@ pre {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+html[data-theme="night"] .yy-brand {
+  color: var(--yy-paper);
+  text-shadow: 0 0 18px rgba(210, 160, 87, 0.28);
 }
 
 .yy-main {
@@ -360,6 +528,10 @@ pre {
   letter-spacing: 0.24em;
   line-height: 1.9;
   writing-mode: vertical-rl;
+}
+
+html[data-theme="night"] .yy-vertical {
+  color: rgba(243, 229, 201, 0.72);
 }
 
 .yy-vertical i {
@@ -391,6 +563,10 @@ pre {
   color: rgba(31, 74, 66, 0.72);
   font-size: 0.82rem;
   letter-spacing: 0.02em;
+}
+
+html[data-theme="night"] .yy-protected {
+  color: rgba(243, 229, 201, 0.66);
 }
 
 .yy-protected__shield {
@@ -451,6 +627,17 @@ pre {
   backdrop-filter: blur(8px);
 }
 
+html[data-theme="night"] .yy-card {
+  border-color: rgba(194, 138, 61, 0.9);
+  background: radial-gradient(
+      circle at 50% 0%,
+      rgba(245, 232, 203, 0.11),
+      transparent 20rem
+    ), linear-gradient(180deg, rgba(9, 28, 32, 0.92), rgba(5, 18, 22, 0.88));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45), inset 0 0 0 1px
+    rgba(245, 232, 203, 0.06);
+}
+
 .yy-card::before {
   position: absolute;
   inset: 1rem;
@@ -471,6 +658,22 @@ pre {
     );
   opacity: 0.9;
   pointer-events: none;
+}
+
+html[data-theme="night"] .yy-card::before {
+  border-color: rgba(210, 160, 87, 0.32);
+  background: radial-gradient(
+      ellipse at 18% 28%,
+      transparent 32%,
+      rgba(210, 160, 87, 0.16) 33%,
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 82% 29%,
+      transparent 32%,
+      rgba(210, 160, 87, 0.12) 33%,
+      transparent 35%
+    );
 }
 
 .yy-card > * {
@@ -547,8 +750,12 @@ pre {
   top: 1rem;
   right: 1rem;
   z-index: 3;
+  display: flex;
+  align-items: stretch;
+  gap: 0.45rem;
 }
 
+.yy-theme,
 .yy-locale {
   display: inline-flex !important;
   height: 2.25rem !important;
@@ -566,6 +773,17 @@ pre {
   box-shadow: none !important;
 }
 
+.yy-theme {
+  gap: 0;
+}
+
+html[data-theme="night"] .yy-theme,
+html[data-theme="night"] .yy-locale {
+  border-color: rgba(210, 160, 87, 0.42) !important;
+  background: rgba(7, 24, 29, 0.72) !important;
+  color: var(--yy-paper) !important;
+}
+
 .yy-locale > span {
   display: flex !important;
   width: 2.25rem !important;
@@ -575,11 +793,13 @@ pre {
   color: var(--yy-gold-dark) !important;
 }
 
+.yy-theme svg,
 .yy-locale svg {
   width: 1rem !important;
   height: 1rem !important;
 }
 
+.yy-theme button,
 .yy-locale button {
   display: flex !important;
   width: 2.5rem !important;
@@ -593,18 +813,38 @@ pre {
   transition: background 160ms ease, color 160ms ease !important;
 }
 
+.yy-theme button + button,
 .yy-locale button + button {
   border-left: 1px solid rgba(184, 138, 59, 0.28) !important;
 }
 
+.yy-theme button:hover,
 .yy-locale button:hover {
   background: rgba(184, 138, 59, 0.1) !important;
   color: var(--yy-ink) !important;
 }
 
+.yy-theme button[aria-pressed="true"],
 .yy-locale button[aria-pressed="true"] {
   background: var(--yy-green) !important;
   color: var(--yy-paper) !important;
+}
+
+html[data-theme="night"] .yy-theme button,
+html[data-theme="night"] .yy-locale button {
+  color: rgba(245, 232, 203, 0.74) !important;
+}
+
+html[data-theme="night"] .yy-theme button:hover,
+html[data-theme="night"] .yy-locale button:hover {
+  background: rgba(210, 160, 87, 0.12) !important;
+  color: var(--yy-paper) !important;
+}
+
+html[data-theme="night"] .yy-theme button[aria-pressed="true"],
+html[data-theme="night"] .yy-locale button[aria-pressed="true"] {
+  background: var(--yy-gold-dark) !important;
+  color: #081519 !important;
 }
 
 .yy-card__emblem {
@@ -621,6 +861,11 @@ pre {
   border-radius: 999px;
   background: linear-gradient(180deg, #fff9ec, #e8dcc3);
   box-shadow: 0 12px 30px rgba(105, 86, 48, 0.2);
+}
+
+html[data-theme="night"] .yy-card__emblem {
+  background: linear-gradient(180deg, #172c2f, #07181d);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.42), 0 0 26px rgba(210, 160, 87, 0.12);
 }
 
 .yy-card__rule {
@@ -650,6 +895,13 @@ pre {
   background: var(--yy-paper);
 }
 
+html[data-theme="night"] .yy-card__rule::before,
+html[data-theme="night"] .yy-card__rule::after,
+html[data-theme="night"] .yy-divider span::before,
+html[data-theme="night"] .yy-divider span::after {
+  background: #08191d;
+}
+
 .yy-card__rule::before {
   left: 35%;
 }
@@ -673,6 +925,10 @@ pre {
   color: rgba(31, 74, 66, 0.82);
   font-size: clamp(1.02rem, 2vw, 1.38rem);
   letter-spacing: 0.1em;
+}
+
+html[data-theme="night"] .yy-subtitle {
+  color: rgba(245, 232, 203, 0.82);
 }
 
 .yy-divider {
@@ -708,6 +964,10 @@ pre {
   letter-spacing: 0.03em;
 }
 
+html[data-theme="night"] .yy-message {
+  color: rgba(245, 232, 203, 0.82);
+}
+
 .yy-card__body {
   margin-top: 1.65rem;
 }
@@ -721,6 +981,12 @@ pre {
   border-radius: 0.35rem;
   background: rgba(255, 250, 239, 0.62);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+html[data-theme="night"] .yy-meta {
+  border-color: rgba(194, 138, 61, 0.52);
+  background: rgba(8, 24, 28, 0.56);
+  box-shadow: inset 0 0 0 1px rgba(245, 232, 203, 0.04);
 }
 
 .yy-meta__item {
@@ -770,6 +1036,10 @@ pre {
   line-height: 1.75;
 }
 
+html[data-theme="night"] .yy-note {
+  color: rgba(245, 232, 203, 0.74);
+}
+
 .yy-note h2,
 .yy-widget h2,
 .yy-detail h2 {
@@ -794,6 +1064,12 @@ pre {
   background: rgba(255, 250, 239, 0.48);
 }
 
+html[data-theme="night"] .yy-widget,
+html[data-theme="night"] .yy-detail {
+  border-color: rgba(194, 138, 61, 0.48);
+  background: rgba(8, 24, 28, 0.44);
+}
+
 .yy-widget__box,
 .yy-detail__box {
   display: flex;
@@ -805,6 +1081,11 @@ pre {
   color: var(--yy-text);
   font-family: var(--font-mono);
   font-size: 0.82rem;
+}
+
+html[data-theme="night"] .yy-widget__box,
+html[data-theme="night"] .yy-detail__box {
+  color: rgba(245, 232, 203, 0.8);
 }
 
 .yy-actions {
@@ -871,9 +1152,20 @@ pre {
   color: #513a1d;
 }
 
+html[data-theme="night"] .yy-button--gold {
+  background: linear-gradient(180deg, rgba(212, 165, 91, 0.95), #8d622c);
+  color: #081519;
+}
+
 .yy-button--green {
   border-color: rgba(47, 101, 91, 0.82);
   background: linear-gradient(180deg, rgba(77, 124, 112, 0.96), var(--yy-green));
+  color: var(--yy-paper);
+}
+
+html[data-theme="night"] .yy-button--green {
+  border-color: rgba(210, 160, 87, 0.68);
+  background: linear-gradient(180deg, rgba(18, 58, 61, 0.98), #0a2f34);
   color: var(--yy-paper);
 }
 
@@ -888,15 +1180,18 @@ pre {
   width: 3.4rem;
   height: 3.4rem;
   flex: 0 0 auto;
-  border: 1px solid rgba(184, 138, 59, 0.45);
-  border-radius: 999px;
-  background: radial-gradient(
-      circle at 40% 36%,
-      rgba(255, 255, 255, 0.9),
-      transparent 34%
-    ),
-    linear-gradient(180deg, rgba(255, 246, 224, 0.9), rgba(184, 138, 59, 0.28));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  border: 0;
+  border-radius: 0;
+  background-image: var(--yy-logo-url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 8px 12px rgba(92, 70, 34, 0.15));
+}
+
+html[data-theme="night"] .yy-mark {
+  filter: drop-shadow(0 0 14px rgba(73, 108, 255, 0.24))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28));
 }
 
 .yy-mark--compact {
@@ -904,57 +1199,14 @@ pre {
   height: 2.85rem;
 }
 
-.yy-mark__moon {
-  position: absolute;
-  top: 0.44rem;
-  left: 0.58rem;
-  width: 1.28rem;
-  height: 1.95rem;
-  border-radius: 999px 0 0 999px;
-  background: var(--yy-gold);
-  transform: rotate(12deg);
+.yy-brand .yy-mark--compact {
+  width: 3rem;
+  height: 3rem;
 }
 
-.yy-mark__moon::after {
-  position: absolute;
-  top: 0.04rem;
-  left: 0.36rem;
-  width: 1.15rem;
-  height: 1.86rem;
-  content: "";
-  border-radius: inherit;
-  background: #f8f3e8;
-}
-
-.yy-mark__wall {
-  position: absolute;
-  right: 0.54rem;
-  bottom: 0.58rem;
-  left: 0.76rem;
-  height: 0.82rem;
-  border-bottom: 0.18rem solid var(--yy-ink);
-  background: var(--yy-gold-dark);
-}
-
-.yy-mark__wall span {
-  position: absolute;
-  top: -0.24rem;
-  width: 0.3rem;
-  height: 0.32rem;
-  background: var(--yy-ink);
-}
-
-.yy-mark__wall span:nth-child(1) {
-  left: 0.12rem;
-}
-
-.yy-mark__wall span:nth-child(2) {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.yy-mark__wall span:nth-child(3) {
-  right: 0.12rem;
+.yy-card__emblem .yy-mark--compact {
+  width: 3.55rem;
+  height: 3.55rem;
 }
 
 html[data-locale="en"] .yy-brand {

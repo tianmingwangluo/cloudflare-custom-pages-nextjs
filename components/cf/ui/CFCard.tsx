@@ -1,5 +1,6 @@
 import { LanguageSwitch } from "@/components/i18n/language-switch";
 import type { ReactNode } from "react";
+import { ThemeSwitch } from "./ThemeSwitch";
 import { YueYuanMark } from "./YueYuanMark";
 
 interface CFCardProps {
@@ -18,6 +19,7 @@ export const CFCard = ({ title, subtitle, message, children }: CFCardProps) => {
       <span className="yy-card__corner yy-card__corner--br" />
 
       <div className="yy-card__tools">
+        <ThemeSwitch />
         <LanguageSwitch className="yy-locale" />
       </div>
 

@@ -393,6 +393,10 @@ export const commonTranslations = {
     en: "Language",
     zh: "语言",
   },
+  themeSwitch: {
+    en: "Theme",
+    zh: "主题",
+  },
   switchToEnglish: {
     en: "Switch to English",
     zh: "切换到英文",
@@ -400,6 +404,14 @@ export const commonTranslations = {
   switchToChinese: {
     en: "Switch to Chinese",
     zh: "切换到中文",
+  },
+  switchToDayTheme: {
+    en: "Switch to day theme",
+    zh: "切换到白天模式",
+  },
+  switchToNightTheme: {
+    en: "Switch to night theme",
+    zh: "切换到黑夜模式",
   },
   notFoundTitle: {
     en: "Page not found",
