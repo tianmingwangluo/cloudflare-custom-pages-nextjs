@@ -18,6 +18,7 @@ import {
   LoaderCircle,
   Lock,
   type LucideIcon,
+  MapPin,
   Moon,
   Network,
   Shield,
@@ -54,6 +55,7 @@ export type IconKey =
   | "check-circle"
   | "x-circle"
   | "loader-circle"
+  | "map-pin"
   | "activity"
   | "network"
   | "help-circle"
@@ -84,6 +86,7 @@ export const icons: Record<IconKey, LucideIcon> = {
   "check-circle": CheckCircle,
   "x-circle": XCircle,
   "loader-circle": LoaderCircle,
+  "map-pin": MapPin,
   activity: Activity,
   network: Network,
   "help-circle": HelpCircle,

@@ -30,12 +30,12 @@ type ChallengeType = ChallengePageConfig["type"];
 export const directories: PageType[] = ["block", "error", "challenge"];
 
 export const types = {
-  block: ["ip", "waf", "rate-limit"] as BlockType[],
+  block: ["waf", "ip", "rate-limit"] as BlockType[],
   error: ["500s", "1000s"] as ErrorType[],
   challenge: [
+    "country",
     "interactive",
     "managed",
-    "country",
     "javascript",
   ] as ChallengeType[],
 };
@@ -47,7 +47,7 @@ export const types = {
 export const blockPages: Record<BlockType, BlockPageConfig> = {
   ip: {
     type: "ip",
-    code: "1006",
+    code: "403",
     icon: "shield-ban",
     networkStatus: {
       clientStatus: "error",
@@ -56,8 +56,8 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
   },
   waf: {
     type: "waf",
-    code: "1010",
-    icon: "shield",
+    code: "403",
+    icon: "shield-alert",
     networkStatus: {
       clientStatus: "error",
       edgeStatus: "success",
@@ -81,7 +81,7 @@ export const blockPages: Record<BlockType, BlockPageConfig> = {
 export const errorPages: Record<ErrorType, ErrorPageConfig> = {
   "500s": {
     type: "500s",
-    code: "500",
+    code: "5xx",
     box: "CLOUDFLARE_ERROR_500S_BOX",
     icon: "badge-alert",
     networkStatus: {
@@ -92,7 +92,7 @@ export const errorPages: Record<ErrorType, ErrorPageConfig> = {
   },
   "1000s": {
     type: "1000s",
-    code: "1000",
+    code: "1xxx",
     box: "CLOUDFLARE_ERROR_1000S_BOX",
     icon: "construction",
     networkStatus: {
@@ -122,7 +122,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     type: "managed",
     code: "403",
     box: "CF_WIDGET_BOX",
-    icon: "shield-check",
+    icon: "shield-ellipsis",
     networkStatus: {
       clientStatus: "challenging",
       edgeStatus: "success",
@@ -132,7 +132,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     type: "country",
     code: "403",
     box: "CF_WIDGET_BOX",
-    icon: "shield-alert",
+    icon: "map-pin",
     networkStatus: {
       clientStatus: "challenging",
       edgeStatus: "success",
@@ -142,7 +142,7 @@ export const challengePages: Record<ChallengeType, ChallengePageConfig> = {
     type: "javascript",
     code: "403",
     box: "CF_WIDGET_BOX",
-    icon: "shield-ellipsis",
+    icon: "loader-circle",
     networkStatus: {
       clientStatus: "challenging",
       edgeStatus: "success",

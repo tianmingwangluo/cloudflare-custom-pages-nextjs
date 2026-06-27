@@ -8,8 +8,8 @@ export const siteConfig = {
     zh: "Cloudflare 安全拦截页",
   } satisfies Localized<string>,
   description: {
-    en: "A minimal, composed, bilingual Cloudflare WAF custom page template.",
-    zh: "一套简约、克制、中英文双版本的 Cloudflare WAF 自定义页面模板。",
+    en: "A minimal, composed, bilingual template set for Cloudflare custom security and error pages.",
+    zh: "一套简约、克制、中英文双版本的 Cloudflare 安全与错误自定义页面模板。",
   } satisfies Localized<string>,
   headerNavItems: [
     {

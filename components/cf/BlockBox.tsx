@@ -28,6 +28,12 @@ export const BlockBox = ({
     zh: `${translate(blockPageTranslations[type], "zh").title} - Cloudflare`,
   });
   const translation = translate(blockPageTranslations[type], locale);
+  const adviceTitle =
+    translation.adviceTitle ??
+    translate(commonTranslations.handlingAdviceTitle, locale);
+  const adviceMessage =
+    translation.adviceMessage ??
+    translate(commonTranslations.handlingAdviceBody, locale);
 
   return (
     <CFCardWrap>
@@ -49,10 +55,10 @@ export const BlockBox = ({
 
             <div>
               <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {translate(commonTranslations.handlingAdviceTitle, locale)}
+                {adviceTitle}
               </h2>
               <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
-                {translate(commonTranslations.handlingAdviceBody, locale)}
+                {adviceMessage}
               </p>
             </div>
           </div>

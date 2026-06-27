@@ -26,6 +26,12 @@ export const CaptchaBox = ({
     zh: `${translate(challengePageTranslations[type], "zh").title} - Cloudflare`,
   });
   const translation = translate(challengePageTranslations[type], locale);
+  const adviceTitle =
+    translation.adviceTitle ??
+    translate(commonTranslations.verificationTitle, locale);
+  const adviceMessage =
+    translation.adviceMessage ??
+    translate(commonTranslations.verificationBody, locale);
 
   return (
     <CFCardWrap>
@@ -49,10 +55,10 @@ export const CaptchaBox = ({
 
             <div>
               <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {translate(commonTranslations.verificationTitle, locale)}
+                {adviceTitle}
               </h2>
               <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
-                {translate(commonTranslations.verificationBody, locale)}
+                {adviceMessage}
               </p>
             </div>
           </div>

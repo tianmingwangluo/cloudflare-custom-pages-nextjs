@@ -41,7 +41,7 @@ const pageConfigs: {
   },
   block: {
     pages: blockPages,
-    defaultType: "ip",
+    defaultType: "waf",
     component: BlockBox,
   },
   challenge: {

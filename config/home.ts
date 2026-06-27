@@ -7,7 +7,7 @@ import {
   translate,
 } from "./i18n";
 import type { IconKey } from "./icons";
-import { blockPages, challengePages, errorPages } from "./routes";
+import { blockPages, challengePages, errorPages, types } from "./routes";
 
 export type ColorScheme = "danger" | "warning" | "primary";
 
@@ -39,32 +39,32 @@ const sectionTranslations = {
   error: {
     en: {
       title: "Error pages",
-      description: "For origin errors, DNS issues, and connection failures.",
+      description: "For Cloudflare 500 class and 1000 class error pages.",
     },
     zh: {
       title: "错误页面",
-      description: "用于源站异常、DNS 或连接错误场景。",
+      description: "用于 Cloudflare 500 类错误和 1000 类错误页面。",
     },
   },
   block: {
     en: {
       title: "Block pages",
-      description: "For IP, WAF, custom rule, and rate limit blocks.",
+      description: "For WAF, IP/country/region, and rate limit blocks.",
     },
     zh: {
       title: "拦截页面",
-      description: "用于 IP、WAF、自定义规则与限速拦截。",
+      description: "用于 WAF、IP/国家/地区和速率限制阻止。",
     },
   },
   challenge: {
     en: {
       title: "Challenge pages",
       description:
-        "For managed challenges, interactive checks, and browser verification.",
+        "For interactive, managed, location-based, and non-interactive challenges.",
     },
     zh: {
       title: "验证页面",
-      description: "用于托管质询、交互验证与浏览器检查。",
+      description: "用于交互式、托管、基于访问来源和非交互式挑战。",
     },
   },
 } as const satisfies Record<
@@ -107,27 +107,15 @@ export function getSections(locale: Locale): Section[] {
 
   return [
     {
-      title: error.title,
-      description: error.description,
-      icon: "triangle-alert",
-      color: "danger",
-      pages: Object.entries(errorPages).map(([type, config]) => ({
-        title: translate(errorPageTranslations[type], locale).title,
-        path: `/cf/error/${type}/`,
-        code: config.code,
-        icon: config.icon,
-      })),
-    },
-    {
       title: block.title,
       description: block.description,
       icon: "lock",
       color: "warning",
-      pages: Object.entries(blockPages).map(([type, config]) => ({
+      pages: types.block.map((type) => ({
         title: translate(blockPageTranslations[type], locale).title,
         path: `/cf/block/${type}/`,
-        code: config.code,
-        icon: config.icon,
+        code: blockPages[type].code,
+        icon: blockPages[type].icon,
       })),
     },
     {
@@ -135,11 +123,23 @@ export function getSections(locale: Locale): Section[] {
       description: challenge.description,
       icon: "shield-check",
       color: "primary",
-      pages: Object.entries(challengePages).map(([type, config]) => ({
+      pages: types.challenge.map((type) => ({
         title: translate(challengePageTranslations[type], locale).title,
         path: `/cf/challenge/${type}/`,
-        code: config.code,
-        icon: config.icon,
+        code: challengePages[type].code,
+        icon: challengePages[type].icon,
+      })),
+    },
+    {
+      title: error.title,
+      description: error.description,
+      icon: "triangle-alert",
+      color: "danger",
+      pages: types.error.map((type) => ({
+        title: translate(errorPageTranslations[type], locale).title,
+        path: `/cf/error/${type}/`,
+        code: errorPages[type].code,
+        icon: errorPages[type].icon,
       })),
     },
   ];

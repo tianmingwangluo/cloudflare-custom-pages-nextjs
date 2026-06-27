@@ -27,6 +27,12 @@ export const ErrorBox = ({
     zh: `${translate(errorPageTranslations[type], "zh").title} - Cloudflare`,
   });
   const translation = translate(errorPageTranslations[type], locale);
+  const adviceTitle =
+    translation.adviceTitle ??
+    translate(commonTranslations.troubleshootingTitle, locale);
+  const adviceMessage =
+    translation.adviceMessage ??
+    translate(commonTranslations.troubleshootingBody, locale);
 
   return (
     <CFCardWrap>
@@ -38,7 +44,7 @@ export const ErrorBox = ({
       <CFCard
         title={translation.title}
         message={translation.message}
-        subtitle={`${translate(commonTranslations.connectionError, locale)} / HTTP ${code}`}
+        subtitle={`${translate(commonTranslations.connectionError, locale)} / Cloudflare ${code}`}
         icon={<Icon name={icon} className="h-6 w-6" />}
         scheme="danger"
         footer={
@@ -50,10 +56,10 @@ export const ErrorBox = ({
 
             <div>
               <h2 className="mb-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {translate(commonTranslations.troubleshootingTitle, locale)}
+                {adviceTitle}
               </h2>
               <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300">
-                {translate(commonTranslations.troubleshootingBody, locale)}
+                {adviceMessage}
               </p>
             </div>
           </div>

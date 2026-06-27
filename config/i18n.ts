@@ -7,6 +7,8 @@ export const defaultLocale: Locale = "en";
 export interface PageTranslation {
   title: string;
   message: string;
+  adviceTitle?: string;
+  adviceMessage?: string;
 }
 
 export interface InterfaceTranslations {
@@ -35,38 +37,56 @@ export const blockPageTranslations: Record<
 > = {
   ip: {
     en: {
-      title: "Access restricted",
+      title: "IP / country / region block",
       message:
-        "This request did not pass the site security policy. If you believe this is a mistake, contact the site administrator and include the Ray ID below.",
+        "Access from this IP address, country, or region is restricted by the site security policy. If you believe this is a mistake, contact the site administrator and include the Ray ID below.",
+      adviceTitle: "Why this happened",
+      adviceMessage:
+        "The request matched an IP, country, region, or access rule configured by the site. Try again from a trusted network, or send the Ray ID to the site administrator for review.",
     },
     zh: {
-      title: "访问已受限",
+      title: "IP/国家/地区阻止",
       message:
-        "当前访问请求未通过安全策略校验。如你认为这是误拦截，请联系站点管理员并附上页面底部的 Ray ID。",
+        "当前 IP 地址、国家或地区受到站点安全策略限制。如果你认为这是误拦截，请联系站点管理员并附上页面底部的 Ray ID。",
+      adviceTitle: "为什么会这样",
+      adviceMessage:
+        "此请求命中了站点配置的 IP、国家、地区或访问规则。你可以更换可信网络后重试，或将 Ray ID 提供给站点管理员核查。",
     },
   },
   waf: {
     en: {
-      title: "Request blocked by security policy",
+      title: "WAF block",
       message:
-        "The firewall detected unusual characteristics in this request and temporarily blocked access. Please try again later or use a trusted network environment.",
+        "The web application firewall detected request characteristics that match a protection rule, so access was blocked before reaching the origin server.",
+      adviceTitle: "Request review",
+      adviceMessage:
+        "Avoid repeated refreshes. If this request should be allowed, share the Ray ID, current IP, and access time with the site administrator.",
     },
     zh: {
-      title: "请求被安全策略拦截",
+      title: "WAF 阻止",
       message:
-        "防火墙检测到此请求存在异常特征，因此暂时阻止访问。请稍后重试，或更换正常网络环境后再次打开页面。",
+        "Web 应用程序防火墙检测到此请求命中了防护规则，因此在请求到达源站前已被阻止。",
+      adviceTitle: "请求复核",
+      adviceMessage:
+        "请避免反复刷新。如果此请求应当被允许，请将 Ray ID、当前 IP 和访问时间提供给站点管理员。",
     },
   },
   "rate-limit": {
     en: {
-      title: "Too many requests",
+      title: "Rate limit block",
       message:
-        "The system detected too many requests in a short period of time. Please wait a moment before trying again.",
+        "The site received too many requests from this visitor in a short period of time. Access is temporarily limited to protect service stability.",
+      adviceTitle: "Try again shortly",
+      adviceMessage:
+        "Wait a moment before refreshing the page. Automated retries or repeated requests may extend the temporary limit.",
     },
     zh: {
-      title: "请求过于频繁",
+      title: "速率限制阻止",
       message:
-        "系统检测到短时间内请求次数较多。请等待片刻后再试，避免反复刷新页面。",
+        "站点在短时间内收到来自当前访客的过多请求。为保护服务稳定性，访问已被临时限制。",
+      adviceTitle: "稍后再试",
+      adviceMessage:
+        "请等待片刻后再刷新页面。自动重试或反复请求可能会延长临时限制时间。",
     },
   },
 } as const;
@@ -77,26 +97,38 @@ export const errorPageTranslations: Record<
 > = {
   "500s": {
     en: {
-      title: "Service temporarily unavailable",
+      title: "500 class errors",
       message:
-        "The origin server returned an unexpected response. Cloudflare recorded this request. Please refresh later or contact the site administrator.",
+        "The origin server returned an unexpected response or could not complete the request. Cloudflare recorded the event for troubleshooting.",
+      adviceTitle: "Origin status",
+      adviceMessage:
+        "Refresh later. If the problem continues, contact the site administrator so they can inspect the origin service, logs, and deployment status.",
     },
     zh: {
-      title: "服务暂时不可用",
+      title: "500 类错误",
       message:
-        "源站返回了异常响应，Cloudflare 已将本次访问记录下来。请稍后刷新页面，或联系站点管理员排查服务状态。",
+        "源站返回了异常响应，或暂时无法完成请求。Cloudflare 已记录本次事件，便于站点管理员排查。",
+      adviceTitle: "源站状态",
+      adviceMessage:
+        "请稍后刷新页面。如果问题持续出现，请联系站点管理员检查源站服务、日志和部署状态。",
     },
   },
   "1000s": {
     en: {
-      title: "Connection could not be established",
+      title: "1000 class errors",
       message:
-        "The domain resolution or network connection is currently abnormal. Please try again later or share the Ray ID below with the site administrator.",
+        "Cloudflare could not complete the request because of a DNS, routing, SSL, or security configuration issue.",
+      adviceTitle: "Configuration check",
+      adviceMessage:
+        "This usually requires an administrator to review DNS records, SSL/TLS settings, origin reachability, or security rules.",
     },
     zh: {
-      title: "连接未能建立",
+      title: "1000 类错误",
       message:
-        "当前域名解析或网络连接出现异常。请稍后再试，或将页面底部的 Ray ID 提供给站点管理员。",
+        "由于 DNS、路由、SSL 或安全配置问题，Cloudflare 暂时无法完成本次请求。",
+      adviceTitle: "配置检查",
+      adviceMessage:
+        "这通常需要站点管理员检查 DNS 记录、SSL/TLS 设置、源站连通性或安全规则配置。",
     },
   },
 } as const;
@@ -107,49 +139,74 @@ export const challengePageTranslations: Record<
 > = {
   interactive: {
     en: {
-      title: "Complete the security check",
+      title: "Interactive challenge",
       message:
-        "Please complete the verification below so we can confirm the request comes from a real visitor. Access will continue automatically after verification.",
+        "Complete the interactive verification below so Cloudflare can confirm this request comes from a real visitor.",
+      adviceTitle: "Before continuing",
+      adviceMessage:
+        "Keep JavaScript and cookies enabled. Access will continue automatically after the challenge is completed.",
     },
     zh: {
-      title: "请完成安全验证",
+      title: "交互式质询",
       message:
-        "为了确认访问来自真实用户，请完成下方验证。验证通过后页面会自动继续访问。",
+        "请完成下方交互式验证，Cloudflare 将通过此步骤确认请求来自真实访客。",
+      adviceTitle: "继续访问前",
+      adviceMessage:
+        "请保持浏览器启用 JavaScript 和 Cookie。验证完成后，页面会自动继续访问。",
     },
   },
   managed: {
     en: {
-      title: "Security check in progress",
+      title: "Managed challenge / I'm Under Attack Mode",
       message:
-        "This site is using stricter protection. Follow the prompt below to continue browsing.",
+        "This site is using managed protection or I'm Under Attack Mode. Cloudflare will decide the appropriate verification step for this visitor.",
+      adviceTitle: "Managed protection",
+      adviceMessage:
+        "Follow the prompt below and keep the page open. Most visitors will continue automatically once Cloudflare completes the check.",
     },
     zh: {
-      title: "正在进行安全检查",
+      title: "托管质询/I'm Under Attack Mode",
       message:
-        "站点当前启用了更严格的防护策略。请根据提示完成验证，以继续访问。",
+        "站点当前启用了托管防护或 I'm Under Attack Mode。Cloudflare 会根据访客风险自动选择合适的验证步骤。",
+      adviceTitle: "托管防护",
+      adviceMessage:
+        "请按照下方提示操作并保持页面打开。大多数访客会在 Cloudflare 完成检查后自动继续访问。",
     },
   },
   country: {
     en: {
-      title: "Additional verification required",
+      title: "IP / country / region challenge",
       message:
-        "Based on the current access location, an additional verification step is required before continuing.",
+        "This request requires additional verification because of its IP address, country, region, or access rule match.",
+      adviceTitle: "Location-based verification",
+      adviceMessage:
+        "Complete the verification below to continue. If this challenge appears unexpectedly, share the Ray ID with the site administrator.",
     },
     zh: {
-      title: "需要额外验证",
+      title: "IP/国家/地区质询",
       message:
-        "根据当前访问来源，系统需要进行一次额外验证。完成后即可继续访问。",
+        "由于当前请求命中了 IP 地址、国家、地区或访问规则，继续访问前需要完成额外验证。",
+      adviceTitle: "基于访问来源的验证",
+      adviceMessage:
+        "请完成下方验证后继续访问。如果你认为此质询不应出现，请将 Ray ID 提供给站点管理员。",
     },
   },
   javascript: {
     en: {
-      title: "Checking your browser",
+      title: "Non-interactive challenge",
       message:
-        "The security system is checking your browser environment. Keep this page open for a moment.",
+        "Cloudflare is verifying this browser automatically. No manual action is usually required while the check is running.",
+      adviceTitle: "Automatic check",
+      adviceMessage:
+        "Keep this page open and do not disable JavaScript or cookies. The page will continue when the verification finishes.",
     },
     zh: {
-      title: "正在确认访问环境",
-      message: "安全系统正在检查浏览器环境，请保持此页面打开，稍候片刻。",
+      title: "非交互式挑战",
+      message:
+        "Cloudflare 正在自动验证当前浏览器。检查过程中通常不需要手动操作。",
+      adviceTitle: "自动检查",
+      adviceMessage:
+        "请保持此页面打开，并不要禁用 JavaScript 或 Cookie。验证完成后页面会继续访问。",
     },
   },
 } as const;
